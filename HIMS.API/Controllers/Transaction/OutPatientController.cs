@@ -27,7 +27,10 @@ namespace HIMS.API.Controllers.Transaction
         
         public readonly I_DynamicExecuteSchedule _DynamicExecuteSchedule;
         public readonly I_Configsetting _Configsetting;
-
+        public readonly I_Department _Department;
+        public readonly I_DepartmentType _DepartmentType;
+        public readonly I_Registration _Registration;
+        public readonly I_Bill _Bill;
         
 
 
@@ -35,7 +38,7 @@ namespace HIMS.API.Controllers.Transaction
          
             //I_Dashboard Dashboard,
            I_DynamicExecuteSchedule dynamicExecuteSchedule,
-           I_Configsetting configsetting
+           I_Configsetting configsetting,I_Department department,I_DepartmentType departmentType,I_Registration registration,I_Bill bill
             )
        {
              
@@ -43,6 +46,10 @@ namespace HIMS.API.Controllers.Transaction
          //   this.i_SS_RoleTemplate = roleTemplateMaster;
             this._DynamicExecuteSchedule = dynamicExecuteSchedule;
             this._Configsetting = configsetting;
+            this._Department = department;
+            this._DepartmentType = departmentType;
+            this._Registration = registration;
+            this._Bill = bill;
             
         }
 
@@ -84,6 +91,69 @@ namespace HIMS.API.Controllers.Transaction
             var SSR = _Configsetting.Update(ConfigSettingparam);
             return Ok(SSR);
         }
+
+
+        //Department
+        [HttpPut("DepartmentInsert")]
+        public IActionResult DepartmentInsert(DepartmentParam DepartmentParam)
+        {
+            var Id = _Department.Insert(DepartmentParam);
+            return Ok(Id);
+        }
+
+
+        //
+        [HttpPut("DepartmentUpdate")]
+        public IActionResult UpdateConfigSetting(DepartmentParam DepartmentParam)
+        {
+            var SSR = _Department.Update(DepartmentParam);
+            return Ok(SSR);
+        }
+
+
+        //DocDepatType
+        [HttpPut("DocDeparttmentTypeInsert")]
+        public IActionResult DocDeparttmentTypeInsert(DepartmentTypeParam DepartmentTypeParam)
+        {
+            var SSR = _DepartmentType.Insert(DepartmentTypeParam);
+            return Ok(SSR);
+        }
+
+
+        //
+        [HttpPut("DocDeparttmentTypeUpdate")]
+        public IActionResult DocDeparttmentTypeUpdate(DepartmentTypeParam DepartmentTypeParam)
+        {
+            var SSR = _DepartmentType.Update(DepartmentTypeParam);
+            return Ok(SSR);
+        }
+
+
+        //Registration
+        [HttpPut("RegistrationInsert")]
+        public IActionResult Registration(RegistrationParam RegistrationParam)
+        {
+            var SSR = _Registration.Insert(RegistrationParam);
+            return Ok(SSR);
+        }
+
+
+        //
+        [HttpPut("RegistrationUpdate")]
+        public IActionResult RegistrationUpdate(RegistrationParam RegistrationParam)
+        {
+            var SSR = _Registration.Update(RegistrationParam);
+            return Ok(SSR);
+        }
+
+        //Bill
+        [HttpPut("BillInsert")]
+        public IActionResult BillInsert(BillParam BillParam)
+        {
+            var SSR = _Bill.Insert(BillParam);
+            return Ok(SSR);
+        }
+
 
        
 

@@ -81,7 +81,13 @@ namespace HIMS.API.Extensions
             services.AddTransient<I_ProjectInformation, R_ProjectInformation>();
             services.AddTransient<I_Sw_Bill_info, R_Sw_Bill_info>();
 
-          
+            //CRMS
+            services.AddTransient<I_Department, R_Department>();
+            services.AddTransient<I_DepartmentType, R_DepartmentType>();
+            services.AddTransient<I_Registration, R_Registration>();
+            services.AddTransient<I_Bill, R_Bill>();
+            //services.AddTransient<I_Department, R_Department>();
+
         }
 
         public static void AddMyAuthentication(this IServiceCollection services, IConfiguration configuration)
