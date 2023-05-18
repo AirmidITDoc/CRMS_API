@@ -130,8 +130,8 @@ namespace HIMS.API.Extensions
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "HIMS Gangamai API",
-                    Description = "Hospital Informaion Management System"
+                    Title = "CRMS API",
+                    Description = "Clinical Management System"
                 });
                 c.AddSecurityDefinition("Bearer",
                     new OpenApiSecurityScheme
