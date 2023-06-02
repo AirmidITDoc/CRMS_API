@@ -16,10 +16,8 @@ namespace HIMS.Model.Opd.OP
       
         public String DepartmentName { get; set; }
         
-        public bool IsDeleted { get; set; }
+        public int CreatedBy { get; set; }
         
-        public int AddedBy { get; set; }
-        public int UpdatedBy { get; set; }
 
 
     }
@@ -28,8 +26,7 @@ namespace HIMS.Model.Opd.OP
     {
         public int DepartmentId { get; set; }
         public String DepartmentName { get; set; }
-        public bool IsDeleted { get; set; }
-        public int UpdatedBy { get; set; }
+                public int UpdatedBy { get; set; }
 
     }
 }

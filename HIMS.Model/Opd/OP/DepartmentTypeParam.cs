@@ -17,7 +17,7 @@ namespace HIMS.Model.Opd.OP
         public int DoctorId { get; set; }
         public int DepartmentId { get; set; }
 
-
+        public int CreatedBy { get; set; }
     }
 
     public class DocDepartmentUpdate
@@ -25,6 +25,9 @@ namespace HIMS.Model.Opd.OP
         public int DocDeptId { get; set; }
         public int DoctorId { get; set; }
         public int DepartmentId { get; set; }
+
+
+        public int UpdatedBy { get; set; }
 
     }
 

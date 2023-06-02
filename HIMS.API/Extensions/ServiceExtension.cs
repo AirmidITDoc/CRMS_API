@@ -86,7 +86,11 @@ namespace HIMS.API.Extensions
             services.AddTransient<I_DepartmentType, R_DepartmentType>();
             services.AddTransient<I_Registration, R_Registration>();
             services.AddTransient<I_Bill, R_Bill>();
-            //services.AddTransient<I_Department, R_Department>();
+           services.AddTransient<I_StateMaster, R_StateMaster>();
+            services.AddTransient<I_AreaMaster, R_AreaMaster>();
+            services.AddTransient<I_CountryMaster, R_CountryMaster>();
+            services.AddTransient<I_ReligienMaster, R_ReliginMaster>();
+            services.AddTransient<I_CaseDetail, R_CaseDetail>();
 
         }
 

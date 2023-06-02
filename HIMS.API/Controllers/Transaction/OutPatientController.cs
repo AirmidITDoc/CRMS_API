@@ -31,14 +31,14 @@ namespace HIMS.API.Controllers.Transaction
         public readonly I_DepartmentType _DepartmentType;
         public readonly I_Registration _Registration;
         public readonly I_Bill _Bill;
-        
+        public readonly I_CaseDetail _Case_Detail;
 
 
         public OutPatientController(
          
             //I_Dashboard Dashboard,
            I_DynamicExecuteSchedule dynamicExecuteSchedule,
-           I_Configsetting configsetting,I_Department department,I_DepartmentType departmentType,I_Registration registration,I_Bill bill
+           I_Configsetting configsetting,I_Department department,I_DepartmentType departmentType,I_Registration registration,I_Bill bill, I_CaseDetail caseDetail
             )
        {
              
@@ -50,7 +50,7 @@ namespace HIMS.API.Controllers.Transaction
             this._DepartmentType = departmentType;
             this._Registration = registration;
             this._Bill = bill;
-            
+            this._Case_Detail = caseDetail;
         }
 
         //SS_RoleTemplateMaster
@@ -155,7 +155,14 @@ namespace HIMS.API.Controllers.Transaction
         }
 
 
-       
+        // CaseDetail Master Insert & Update
+        [HttpPost("CaseDetailSave")]
+        public IActionResult CaseDetailSave(CaseDetail CaseDetail)
+        {
+            var menuMaster = _Case_Detail.Insert(CaseDetail);
+            //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
+            return Ok(menuMaster);
+        }
 
     }
 

@@ -44,7 +44,7 @@ namespace HIMS.Data.Opd.OP
             RegistrationParam.VisitSave.RegID = Convert.ToInt64(RegID);
             var dic1 = RegistrationParam.VisitSave.ToDictionary();
             dic1.Remove("VisitId");
-            var VisitID = ExecNonQueryProcWithOutSaveChanges("insert_VisitDetails_New_1", dic1, outputId1);
+            var VisitID = ExecNonQueryProcWithOutSaveChanges("insert_VisitDetails", dic1, outputId1);
 
             _unitofWork.SaveChanges();
 
@@ -66,11 +66,11 @@ namespace HIMS.Data.Opd.OP
             var disc1 = RegistrationParam.RegistrationUpdate.ToDictionary();
             ExecNonQueryProcWithOutSaveChanges("update_Registration_1", disc1);
 
-            var Reg = RegistrationParam.RegistrationUpdate.RegId;
+       /*     var Reg = RegistrationParam.RegistrationUpdate.RegId;
             RegistrationParam.VisitSave.RegID = Convert.ToInt64(Reg);
             var dic1 = RegistrationParam.VisitSave.ToDictionary();
             dic1.Remove("VisitId");
-            var VisitID = ExecNonQueryProcWithOutSaveChanges("insert_VisitDetails_New_1", dic1, outputId);
+            var VisitID = ExecNonQueryProcWithOutSaveChanges("insert_VisitDetails_New_1", dic1, outputId);*/
 
 
             _unitofWork.SaveChanges();

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using HIMS.Data;
 using HIMS.Data.Master;
-
+using HIMS.Data.Opd.OP;
 using HIMS.Model;
 using HIMS.Model.Master;
-
+using HIMS.Model.Opd.OP;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -22,17 +22,25 @@ namespace HIMS.API.Controllers.Master
         public readonly I_MenuMaster _MenuMaster;
         public readonly I_MenuMasterDetails _MenuMasterDetails;
         public readonly I_MenuMasterDetails_Details _MenuMasterDetails_Details;
-
+        public readonly I_AreaMaster _AreaMaster;
+        public readonly I_StateMaster _StateMaster;
+        public readonly I_CityMaster _CityMaster;
+        public readonly I_CountryMaster _CountryMaster;
+        public readonly I_ReligienMaster _ReligienMaster;
+       
         public MasterController(I_MenuMaster menuMaster,
             
-            I_MenuMasterDetails menuMasterDetails,I_MenuMasterDetails_Details menuMasterDetails_Details
+            I_MenuMasterDetails menuMasterDetails,I_MenuMasterDetails_Details menuMasterDetails_Details,I_AreaMaster areaMaster,
+            I_StateMaster stateMaster,I_CountryMaster countryMaster,I_ReligienMaster religienMaster
             )
         {
            
             this._MenuMaster = menuMaster;
             this._MenuMasterDetails = menuMasterDetails;
             this._MenuMasterDetails_Details = menuMasterDetails_Details;
-           
+            this._AreaMaster = areaMaster;
+            this._ReligienMaster = religienMaster;
+            
         }
 
         /* [HttpPost("ServiceSave")]
@@ -78,8 +86,88 @@ namespace HIMS.API.Controllers.Master
             var menuMaster = _MenuMaster.Update(menuMasterParams);
             return Ok(menuMaster);
         }*/
-     
-      
 
+
+
+        // Area Master Insert & Update
+        [HttpPost("AreaSave")]
+        public IActionResult AreaSave(AreaMasterParam AreaMasterParam)
+        {
+            var menuMaster = _AreaMaster.Save(AreaMasterParam);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("AreaUpdate")]
+        public IActionResult AreaUpdate(AreaMasterParam AreaMasterParam)
+        {
+            var menuMaster = _AreaMaster.Update(AreaMasterParam);
+            return Ok(menuMaster);
+        }
+     
+
+        // City Master Insert & Update
+        [HttpPost("CitySave")]
+        public IActionResult CitySave(CityMasterParam CityMasterParam)
+        {
+            var menuMaster = _CityMaster.Save(CityMasterParam);
+             return Ok(menuMaster);
+        }
+
+        [HttpPost("CityrUpdate")]
+        public IActionResult CityrUpdate(CityMasterParam CityMasterParam)
+        {
+            var menuMaster = _CityMaster.Update(CityMasterParam);
+            return Ok(menuMaster);
+        }
+     
+
+        // State Master Insert & Update
+        [HttpPost("StateSave")]
+        public IActionResult StateSave(StateMasterParam StateMasterParam)
+        {
+            var menuMaster = _StateMaster.Save(StateMasterParam);
+               return Ok(menuMaster);
+        }
+
+        [HttpPost("StateUpdate")]
+        public IActionResult StateUpdate(StateMasterParam StateMasterParam)
+        {
+            var menuMaster = _StateMaster.Update(StateMasterParam);
+            return Ok(menuMaster);
+        }
+     
+        // Country Master Insert & Update
+        [HttpPost("CountrySave")]
+        public IActionResult CountrySave(CountryMasterParam CountryMasterParam)
+        {
+            var menuMaster = _CountryMaster.Save(CountryMasterParam);
+            //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("CountryUpdate")]
+        public IActionResult CountryUpdate(CountryMasterParam CountryMasterParam)
+        {
+            var menuMaster = _CountryMaster.Update(CountryMasterParam);
+            return Ok(menuMaster);
+        }
+
+        // Religion Master Insert & Update
+        [HttpPost("ReligionSave")]
+        public IActionResult ReligionSave(ReliginMasterParam ReliginMasterParam)
+        {
+            var menuMaster = _ReligienMaster.Save(ReliginMasterParam);
+            //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("ReligionUpdate")]
+        public IActionResult CountryUpdate(ReliginMasterParam ReliginMasterParam)
+        {
+            var menuMaster = _ReligienMaster.Update(ReliginMasterParam);
+            return Ok(menuMaster);
+        }
+
+       
     }
 }

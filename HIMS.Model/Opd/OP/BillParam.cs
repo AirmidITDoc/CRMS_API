@@ -25,7 +25,7 @@ namespace HIMS.Model.Opd.OP
         public float BalanceAmt { get; set; }
         public DateTime BillDate { get; set; }
         public int OPD_IPD_Type { get; set; }
-        public int AddedBy { get; set; }
+        public int CreatedBy { get; set; }
         public float TotalAdvanceAmount { get; set; }
         public DateTime BillTime { get; set; }
         public int ConcessionReasonId { get; set; }
@@ -76,7 +76,7 @@ namespace HIMS.Model.Opd.OP
         public int RefundId { get; set; }
         public int TransactionType { get; set; }
         public String Remark { get; set; }
-        public int AddBy { get; set; }
+        public int CreatedBy { get; set; }
         public int IsCancelled { get; set; }
         public int IsCancelledBy { get; set; }
         public DateTime IsCancelledDate { get; set; }
