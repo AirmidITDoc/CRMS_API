@@ -7,7 +7,7 @@ namespace HIMS.Data.Master
 {
    public interface I_AreaMaster
     {
-        bool Update(AreaMasterParam AreaMasterParam);
-        bool Save(AreaMasterParam AreaMasterParam);
+       public bool Update(AreaMasterParam AreaMasterParam);
+      public  bool Save(AreaMasterParam AreaMasterParam);
     }
 }

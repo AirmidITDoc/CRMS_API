@@ -17,8 +17,8 @@ namespace HIMS.Data.Master
         {
             // throw new NotImplementedException();
 
-            var disc1 = ReliginMasterParam.ReligionMasterUpdate.ToDictionary();
-            ExecNonQueryProcWithOutSaveChanges("Update_M_ReligionMaster", disc1);
+            var disc1 = ReliginMasterParam.ReligionMasterInsert.ToDictionary();
+            ExecNonQueryProcWithOutSaveChanges("insert_ReligionMaster_1", disc1); 
 
             //commit transaction
             _unitofWork.SaveChanges();
@@ -29,9 +29,9 @@ namespace HIMS.Data.Master
         {
             // throw new NotImplementedException();
 
-            var disc = ReliginMasterParam.ReligionMasterInsert.ToDictionary();
+            var disc = ReliginMasterParam.ReligionMasterUpdate.ToDictionary();
 
-            ExecNonQueryProcWithOutSaveChanges("insert_ReligionMaster_1", disc);
+            ExecNonQueryProcWithOutSaveChanges("Update_M_ReligionMaster", disc);
 
             //commit transaction
             _unitofWork.SaveChanges();

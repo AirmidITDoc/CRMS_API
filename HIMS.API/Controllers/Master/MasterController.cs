@@ -27,11 +27,12 @@ namespace HIMS.API.Controllers.Master
         public readonly I_CityMaster _CityMaster;
         public readonly I_CountryMaster _CountryMaster;
         public readonly I_ReligienMaster _ReligienMaster;
+      //  public readonly I_RelationshipMaster _RelationshipMaster;
        
         public MasterController(I_MenuMaster menuMaster,
             
             I_MenuMasterDetails menuMasterDetails,I_MenuMasterDetails_Details menuMasterDetails_Details,I_AreaMaster areaMaster,
-            I_StateMaster stateMaster,I_CountryMaster countryMaster,I_ReligienMaster religienMaster
+            I_StateMaster stateMaster,I_CountryMaster countryMaster,I_ReligienMaster religienMaster,I_CityMaster cityMaster
             )
         {
            
@@ -40,7 +41,11 @@ namespace HIMS.API.Controllers.Master
             this._MenuMasterDetails_Details = menuMasterDetails_Details;
             this._AreaMaster = areaMaster;
             this._ReligienMaster = religienMaster;
-            
+            this._CityMaster = cityMaster;
+            this._StateMaster = stateMaster;
+          //  this._RelationshipMaster = relationshipMaster;
+            this._CountryMaster = countryMaster;
+
         }
 
         /* [HttpPost("ServiceSave")]
@@ -93,8 +98,8 @@ namespace HIMS.API.Controllers.Master
         [HttpPost("AreaSave")]
         public IActionResult AreaSave(AreaMasterParam AreaMasterParam)
         {
-            var menuMaster = _AreaMaster.Save(AreaMasterParam);
-            return Ok(menuMaster);
+            var Master = _AreaMaster.Save(AreaMasterParam);
+            return Ok(Master);
         }
 
         [HttpPost("AreaUpdate")]
@@ -157,8 +162,7 @@ namespace HIMS.API.Controllers.Master
         public IActionResult ReligionSave(ReliginMasterParam ReliginMasterParam)
         {
             var menuMaster = _ReligienMaster.Save(ReliginMasterParam);
-            //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
-            return Ok(menuMaster);
+              return Ok(menuMaster);
         }
 
         [HttpPost("ReligionUpdate")]
@@ -168,6 +172,22 @@ namespace HIMS.API.Controllers.Master
             return Ok(menuMaster);
         }
 
-       
+/*
+        // Relationship Master Insert & Update
+        [HttpPost("RelationshipSave")]
+        public IActionResult RelationshipSave(RelationshipMasterparam RelationshipMasterparam)
+        {
+            var menuMaster = _RelationshipMaster.Save(RelationshipMasterparam);
+            //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("RelationshipUpdate")]
+        public IActionResult RelationshipUpdate(RelationshipMasterparam RelationshipMasterparam)
+        {
+            var menuMaster = _RelationshipMaster.Update(RelationshipMasterparam);
+            return Ok(menuMaster);
+        }*/
+
     }
 }

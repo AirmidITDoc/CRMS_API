@@ -91,6 +91,15 @@ namespace HIMS.API.Extensions
             services.AddTransient<I_CountryMaster, R_CountryMaster>();
             services.AddTransient<I_ReligienMaster, R_ReliginMaster>();
             services.AddTransient<I_CaseDetail, R_CaseDetail>();
+            
+
+            services.AddTransient<I_AreaMaster, R_AreaMaster>();
+            services.AddTransient<I_CityMaster, R_CityMaster>();
+            services.AddTransient<I_CountryMaster, R_CountryMaster>();
+            services.AddTransient<I_ReligienMaster, R_ReliginMaster>();
+           // services.AddTransient<I_RelationshipMaster, R_RelationshipMaster>(); 
+            services.AddTransient<I_StateMaster, R_StateMaster>();
+           // services.AddTransient<I_CaseDetail, R_CaseDetail>();
 
         }
 

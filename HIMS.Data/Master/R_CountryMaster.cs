@@ -16,8 +16,8 @@ namespace HIMS.Data.Master
         public bool Save(CountryMasterParam CountryMasterParam)
         {
             //  throw new NotImplementedException();
-            var disc1 = CountryMasterParam.CountryMasterUpdate.ToDictionary();
-            ExecNonQueryProcWithOutSaveChanges("update_CountryMaster_1", disc1);
+            var disc1 = CountryMasterParam.CountryMasterInsert.ToDictionary();
+            ExecNonQueryProcWithOutSaveChanges("insert_CountryMaster_1", disc1);
 
             //commit transaction
             _unitofWork.SaveChanges();
@@ -28,9 +28,9 @@ namespace HIMS.Data.Master
         {
             //throw new NotImplementedException();
 
-            var disc = CountryMasterParam.CountryMasterInsert.ToDictionary();
+            var disc = CountryMasterParam.CountryMasterUpdate.ToDictionary();
 
-            ExecNonQueryProcWithOutSaveChanges("insert_CountryMaster_1", disc);
+            ExecNonQueryProcWithOutSaveChanges("update_CountryMaster_1", disc); 
 
             //commit transaction
             _unitofWork.SaveChanges();

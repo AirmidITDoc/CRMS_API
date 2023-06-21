@@ -8,7 +8,8 @@ using HIMS.Model.Opd;
 using HIMS.Model.Transaction;
 using HIMS.Data.Opd.OP;
 using HIMS.Model.Opd.OP;
-
+using HIMS.Data.Master;
+using HIMS.Model.Master;
 
 namespace HIMS.API.Controllers.Transaction
 {
@@ -39,7 +40,8 @@ namespace HIMS.API.Controllers.Transaction
             //I_Dashboard Dashboard,
            I_DynamicExecuteSchedule dynamicExecuteSchedule,
            I_Configsetting configsetting,I_Department department,I_DepartmentType departmentType,I_Registration registration,I_Bill bill, I_CaseDetail caseDetail
-            )
+         
+              )
        {
              
        
@@ -51,6 +53,8 @@ namespace HIMS.API.Controllers.Transaction
             this._Registration = registration;
             this._Bill = bill;
             this._Case_Detail = caseDetail;
+
+
         }
 
         //SS_RoleTemplateMaster
@@ -163,6 +167,7 @@ namespace HIMS.API.Controllers.Transaction
             //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
             return Ok(menuMaster);
         }
+
 
     }
 

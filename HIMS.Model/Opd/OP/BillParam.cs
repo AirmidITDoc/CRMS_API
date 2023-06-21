@@ -50,7 +50,7 @@ namespace HIMS.Model.Opd.OP
         public int BillNo { get; set; }
         public int ChargesId { get; set; }
 
-        // public int BillDetailId { get; set; }
+         public int CreatedBy { get; set; }
     }
 
 

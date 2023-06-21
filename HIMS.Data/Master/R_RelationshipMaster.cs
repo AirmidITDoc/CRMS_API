@@ -17,8 +17,8 @@ namespace HIMS.Data.Master
         {
             // throw new NotImplementedException();
 
-            var disc1 = RelationshipMasterparam.RelationshipMasterUpdate.ToDictionary();
-            ExecNonQueryProcWithOutSaveChanges("update_RelationshipMaster_1", disc1);
+            var disc1 = RelationshipMasterparam.RelationshipMasterInsert.ToDictionary();
+            ExecNonQueryProcWithOutSaveChanges("insert_RelationshipMaster_1", disc1); 
 
             //commit transaction
             _unitofWork.SaveChanges();
@@ -28,9 +28,9 @@ namespace HIMS.Data.Master
         public bool Update(RelationshipMasterparam RelationshipMasterparam)
         {
             //throw new NotImplementedException();
-            var disc = RelationshipMasterparam.RelationshipMasterInsert.ToDictionary();
+            var disc = RelationshipMasterparam.RelationshipMasterUpdate.ToDictionary();
 
-            ExecNonQueryProcWithOutSaveChanges("insert_RelationshipMaster_1", disc);
+            ExecNonQueryProcWithOutSaveChanges("update_RelationshipMaster_1", disc);
 
             //commit transaction
             _unitofWork.SaveChanges();

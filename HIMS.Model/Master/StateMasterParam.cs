@@ -26,7 +26,7 @@ namespace HIMS.Model.Master
         public int StateId { get; set; }
         public String StateName { get; set; }
         public int CountryId { get; set; }
-        public bool IsDeleted { get; set; }
+       // public bool IsDeleted { get; set; }
         public int UpdatedBy { get; set; }
     }
 }

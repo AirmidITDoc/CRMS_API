@@ -17,8 +17,8 @@ namespace HIMS.Data.Master
         {
             //  throw new NotImplementedException();
 
-            var disc1 = StateMasterParam.StateMasterUpdate.ToDictionary();
-            ExecNonQueryProcWithOutSaveChanges("update_StateMaster_1", disc1);
+            var disc1 = StateMasterParam.StateMasterInsert.ToDictionary();
+            ExecNonQueryProcWithOutSaveChanges("insert_StateMaster_1", disc1); 
 
             //commit transaction
             _unitofWork.SaveChanges();
@@ -29,9 +29,9 @@ namespace HIMS.Data.Master
         {
             // throw new NotImplementedException();
 
-            var disc = StateMasterParam.StateMasterInsert.ToDictionary();
+            var disc = StateMasterParam.StateMasterUpdate.ToDictionary();
 
-            ExecNonQueryProcWithOutSaveChanges("insert_StateMaster_1", disc);
+            ExecNonQueryProcWithOutSaveChanges("update_StateMaster_1", disc);
 
             //commit transaction
             _unitofWork.SaveChanges();

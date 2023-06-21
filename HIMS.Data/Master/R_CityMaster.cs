@@ -17,9 +17,8 @@ namespace HIMS.Data.Master
         {
             // throw new NotImplementedException();
 
-            var disc1 = CityMasterParam.CityMasterUpdate.ToDictionary();
-            ExecNonQueryProcWithOutSaveChanges("update_M_CityMaster_1", disc1);
-            //commit transaction
+            var disc1 = CityMasterParam.CityMasterInsert.ToDictionary();
+            ExecNonQueryProcWithOutSaveChanges("insert_M_CityMaster_1", disc1); 
             _unitofWork.SaveChanges();
             return true;
         }
@@ -27,8 +26,8 @@ namespace HIMS.Data.Master
         public bool Update(CityMasterParam CityMasterParam)
         {
             //throw new NotImplementedException();
-            var disc = CityMasterParam.CityMasterInsert.ToDictionary();
-            ExecNonQueryProcWithOutSaveChanges("insert_M_CityMaster_1", disc);
+            var disc = CityMasterParam.CityMasterUpdate.ToDictionary();
+            ExecNonQueryProcWithOutSaveChanges("update_M_CityMaster_1", disc);
             //commit transaction
             _unitofWork.SaveChanges();
             return true;

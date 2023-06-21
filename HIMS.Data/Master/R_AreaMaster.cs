@@ -17,8 +17,8 @@ namespace HIMS.Data.Master
         public bool Save(AreaMasterParam AreaMasterParam)
         {
            // throw new NotImplementedException();
-            var disc1 = AreaMasterParam.AreaMasterUpdate.ToDictionary();
-            ExecNonQueryProcWithOutSaveChanges("update_AreaMaster_1", disc1);
+            var disc1 = AreaMasterParam.AreaMasterInsert.ToDictionary();
+            ExecNonQueryProcWithOutSaveChanges("insert_AreaMaster_1", disc1); 
             //commit transaction
             _unitofWork.SaveChanges();
             return true;
@@ -29,8 +29,8 @@ namespace HIMS.Data.Master
         {
             // throw new NotImplementedException();
 
-            var disc = AreaMasterParam.AreaMasterInsert.ToDictionary();
-            ExecNonQueryProcWithOutSaveChanges("insert_AreaMaster_1", disc);
+            var disc = AreaMasterParam.AreaMasterUpdate.ToDictionary();
+            ExecNonQueryProcWithOutSaveChanges("update_AreaMaster_1", disc);
             //commit transaction
             _unitofWork.SaveChanges();
             return true;
