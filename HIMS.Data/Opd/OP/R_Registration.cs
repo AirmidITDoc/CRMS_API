@@ -15,7 +15,7 @@ namespace HIMS.Data.Opd.OP
             //transaction and connection is open when you inject unitofwork
         }
 
-        public bool Insert(RegistrationParam RegistrationParam)
+        public String Insert(RegistrationParam RegistrationParam)
         {
             //  throw new NotImplementedException();
 
@@ -48,7 +48,7 @@ namespace HIMS.Data.Opd.OP
 
             _unitofWork.SaveChanges();
 
-            return true;
+            return (VisitID);
         }
 
         public bool Update(RegistrationParam RegistrationParam)
