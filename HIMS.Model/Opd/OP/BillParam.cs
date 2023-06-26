@@ -9,9 +9,11 @@ namespace HIMS.Model.Opd.OP
        
         public InsertBillupdatewithbillno InsertBillupdatewithbillno { get; set; }
 
-        public List<OpBillDetailsInsert> OpBillDetailsInsert { get; set; }
+        public List<ChargesDetailInsert> ChargesDetailInsert { get; set; }
 
-       public OPInsertPayment OPInsertPayment { get; set; }
+        public List<BillDetailInsert> BillDetailInsert { get; set; }
+
+        public OPInsertPayment OPInsertPayment { get; set; }
     }
 
     public class InsertBillupdatewithbillno
@@ -45,12 +47,48 @@ namespace HIMS.Model.Opd.OP
         public string DiscComments { get; set; }
     }
 
-    public class OpBillDetailsInsert
+    public class ChargesDetailInsert
     {
-        public int BillNo { get; set; }
-        public int ChargesId { get; set; }
+        public DateTime ChargesDate { get; set; }
+        public bool OPD_IPD_Type { get; set; }
 
-         public int CreatedBy { get; set; }
+         public int OPD_IPD_Id { get; set; }
+
+        public int ServiceId { get; set; }
+        public long Price { get; set; }
+
+        public long Qty { get; set; }
+        public float TotalAmt { get; set; }
+        public float ConcessionPercentage { get; set; }
+
+        public float ConcessionAmount { get; set; }
+        public float NetAmount { get; set; }
+        public int DoctorId { get; set; }
+
+        public float DocPercentage { get; set; }
+        public float DocAmt { get; set; }
+        public float HospitalAmt { get; set; }
+
+        public bool IsGenerated { get; set; }
+        public int AddedBy { get; set; }
+        public bool IsCancelled { get; set; }
+        public bool IsCancelledBy { get; set; }
+
+        public DateTime IsCancelledDate { get; set; }
+        public bool IsPathology { get; set; }
+        public bool IsRadiology { get; set; }
+        public bool IsPackage { get; set; }
+
+        public int PackageMainChargeID { get; set; }
+        public bool IsSelfOrCompanyService { get; set; }
+        public int PackageId { get; set; }
+        public DateTime ChargeTime { get; set; }
+
+        public int ClassId { get; set; }
+        public int BillNo { get; set; }
+
+        public int ChargeID { get; set; }
+       
     }
 
 
@@ -90,5 +128,10 @@ namespace HIMS.Model.Opd.OP
         public long PayTMAmount { get; set; }
         public String PayTMTranNo { get; set; }
         public DateTime PayTMDate { get; set; }
+    }
+    public class BillDetailInsert
+    {
+        public int BillNo { get; set; }
+        public int ChargesID { get; set; }
     }
 }

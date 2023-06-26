@@ -35,6 +35,16 @@ namespace HIMS.Data.Opd.OP
             return No;
         }
 
-      
+        public bool Update(CaseDetail CaseDetail)
+        {
+            //throw new NotImplementedException();
+
+
+            var disc3 = CaseDetail.UpdateCaseDetail.ToDictionary();
+            var No = ExecNonQueryProcWithOutSaveChanges("Update_Casedetail", disc3);
+
+            _unitofWork.SaveChanges();
+            return true;
+        }
     }
 }

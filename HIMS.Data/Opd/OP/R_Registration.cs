@@ -53,26 +53,13 @@ namespace HIMS.Data.Opd.OP
 
         public bool Update(RegistrationParam RegistrationParam)
         {
-
-            var outputId = new SqlParameter
-            {
-                SqlDbType = SqlDbType.BigInt,
-                ParameterName = "@VisitId",
-                Value = 0,
-                Direction = ParameterDirection.Output
-            };
+                      
 
             //throw new NotImplementedException();
             var disc1 = RegistrationParam.RegistrationUpdate.ToDictionary();
             ExecNonQueryProcWithOutSaveChanges("update_Registration_1", disc1);
 
-       /*     var Reg = RegistrationParam.RegistrationUpdate.RegId;
-            RegistrationParam.VisitSave.RegID = Convert.ToInt64(Reg);
-            var dic1 = RegistrationParam.VisitSave.ToDictionary();
-            dic1.Remove("VisitId");
-            var VisitID = ExecNonQueryProcWithOutSaveChanges("insert_VisitDetails_New_1", dic1, outputId);*/
-
-
+     
             _unitofWork.SaveChanges();
             return true;
         }

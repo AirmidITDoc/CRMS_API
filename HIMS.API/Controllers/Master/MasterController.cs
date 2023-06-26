@@ -27,12 +27,21 @@ namespace HIMS.API.Controllers.Master
         public readonly I_CityMaster _CityMaster;
         public readonly I_CountryMaster _CountryMaster;
         public readonly I_ReligienMaster _ReligienMaster;
-      //  public readonly I_RelationshipMaster _RelationshipMaster;
-       
+        //  public readonly I_RelationshipMaster _RelationshipMaster;
+        public readonly I_DoctorMaster _DoctorMaster;
+
+        public readonly I_CompanyMaster _CompanyMaster;
+        public readonly I_BankMaster _BankMaster;
+        public readonly I_ServiceMaster _ServiceMaster;
+        public readonly I_DoctorTypeMaster _DoctorTypeMaster;
+        public readonly I_PatientType _PatientType;
+        public readonly I_CompanyType _CompanyType;
         public MasterController(I_MenuMaster menuMaster,
             
             I_MenuMasterDetails menuMasterDetails,I_MenuMasterDetails_Details menuMasterDetails_Details,I_AreaMaster areaMaster,
-            I_StateMaster stateMaster,I_CountryMaster countryMaster,I_ReligienMaster religienMaster,I_CityMaster cityMaster
+            I_StateMaster stateMaster,I_CountryMaster countryMaster,I_ReligienMaster religienMaster,I_CityMaster cityMaster,I_DoctorMaster doctorMaster,
+            I_CompanyMaster companyMaster,I_BankMaster bankMaster,I_ServiceMaster serviceMaster,I_DoctorTypeMaster doctorTypeMaster,I_PatientType patientType,
+            I_CompanyType companyType
             )
         {
            
@@ -45,7 +54,13 @@ namespace HIMS.API.Controllers.Master
             this._StateMaster = stateMaster;
           //  this._RelationshipMaster = relationshipMaster;
             this._CountryMaster = countryMaster;
-
+            this._DoctorMaster = doctorMaster;
+            this._CompanyMaster = companyMaster;
+            this._BankMaster = bankMaster;
+            this._ServiceMaster = serviceMaster;
+            this._PatientType = patientType;
+            this._DoctorTypeMaster = doctorTypeMaster;
+            this._CompanyType = companyType;
         }
 
         /* [HttpPost("ServiceSave")]
@@ -172,22 +187,131 @@ namespace HIMS.API.Controllers.Master
             return Ok(menuMaster);
         }
 
-/*
-        // Relationship Master Insert & Update
-        [HttpPost("RelationshipSave")]
-        public IActionResult RelationshipSave(RelationshipMasterparam RelationshipMasterparam)
+        /*
+                // Relationship Master Insert & Update
+                [HttpPost("RelationshipSave")]
+                public IActionResult RelationshipSave(RelationshipMasterparam RelationshipMasterparam)
+                {
+                    var menuMaster = _RelationshipMaster.Save(RelationshipMasterparam);
+                    //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
+                    return Ok(menuMaster);
+                }
+
+                [HttpPost("RelationshipUpdate")]
+                public IActionResult RelationshipUpdate(RelationshipMasterparam RelationshipMasterparam)
+                {
+                    var menuMaster = _RelationshipMaster.Update(RelationshipMasterparam);
+                    return Ok(menuMaster);
+                }*/
+
+
+
+        // Doctor Master Insert & Update
+        [HttpPost("DoctorSave")]
+        public IActionResult DoctorSave(DoctorMasterparam DoctorMasterparam)
         {
-            var menuMaster = _RelationshipMaster.Save(RelationshipMasterparam);
-            //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
+            var menuMaster = _DoctorMaster.Insert(DoctorMasterparam);
             return Ok(menuMaster);
         }
 
-        [HttpPost("RelationshipUpdate")]
-        public IActionResult RelationshipUpdate(RelationshipMasterparam RelationshipMasterparam)
+        [HttpPost("DoctorUpdate")]
+        public IActionResult DoctorUpdate(DoctorMasterparam DoctorMasterparam)
         {
-            var menuMaster = _RelationshipMaster.Update(RelationshipMasterparam);
+            var menuMaster = _DoctorMaster.Update(DoctorMasterparam);
+            return Ok(menuMaster);
+        }
+
+        // DoctorType Master Insert & Update
+        [HttpPost("DoctorTypeSave")]
+        public IActionResult DoctorTypeSave(Doctortypeparam Doctortypeparam)
+        {
+            var menuMaster = _DoctorTypeMaster.Save(Doctortypeparam);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("DoctorTypeUpdate")]
+        public IActionResult DoctorTypeUpdate(Doctortypeparam Doctortypeparam)
+        {
+            var menuMaster = _DoctorTypeMaster.Update(Doctortypeparam);
+            return Ok(menuMaster);
+        }
+        // Company Master Insert & Update
+        [HttpPost("CompanySave")]
+        public IActionResult CompanySave(CompanyMasterparam CompanyMasterparam)
+        {
+            var menuMaster = _CompanyMaster.Save(CompanyMasterparam);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("CompanyUpdate")]
+        public IActionResult CompanyUpdate(CompanyMasterparam CompanyMasterparam)
+        {
+            var menuMaster = _CompanyMaster.Update(CompanyMasterparam);
+            return Ok(menuMaster);
+        }
+
+
+        // CompanyType Master Insert & Update
+        [HttpPost("CompanyTypeSave")]
+        public IActionResult CompanyTypeSave(CompanyTypeParam CompanyTypeParam)
+        {
+            var menuMaster = _CompanyType.Save(CompanyTypeParam);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("CompanyTypeUpdate")]
+        public IActionResult CompanyTypeUpdate(CompanyTypeParam CompanyTypeParam)
+        {
+            var menuMaster = _CompanyType.Update(CompanyTypeParam);
+            return Ok(menuMaster);
+        }
+
+
+     
+
+        // Service Master Insert & Update
+        [HttpPost("ServiceSave")]
+        public IActionResult ServiceSave(ServiceMasterParam ServiceMasterParam)
+        {
+            var menuMaster = _ServiceMaster.Save(ServiceMasterParam);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("ServiceUpdate")]
+        public IActionResult ServiceUpdate(ServiceMasterParam ServiceMasterParam)
+        {
+            var menuMaster = _ServiceMaster.Update(ServiceMasterParam);
+            return Ok(menuMaster);
+        }
+
+        // Bank Master Insert & Update
+        [HttpPost("BankSave")]
+        public IActionResult BankSave(BankMasterParam BankMasterParam)
+        {
+            var menuMaster = _BankMaster.Save(BankMasterParam);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("BankUpdate")]
+        public IActionResult ServiceUpdate(BankMasterParam BankMasterParam)
+        {
+            var menuMaster = _BankMaster.Update(BankMasterParam);
+            return Ok(menuMaster);
+        }
+
+        // PatientType Master Insert & Update
+        [HttpPost("PatientTypeSave")]
+        public IActionResult PatientTypeSave(PatientTypeParam PatientTypeParam)
+        {
+            var menuMaster = _PatientType.Save(PatientTypeParam);
+            return Ok(menuMaster);
+        }
+
+       /* [HttpPost("PatientTypeUpdate")]
+        public IActionResult PatientTypeUpdate(PatientTypeParam PatientTypeParam)
+        {
+            var menuMaster = _PatientType.Update(PatientTypeParam);
             return Ok(menuMaster);
         }*/
-
     }
 }

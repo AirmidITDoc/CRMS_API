@@ -5,9 +5,10 @@ using System.Text;
 
 namespace HIMS.Data.Opd.OP
 {
-  public  interface I_CaseDetail
+   public interface I_ClassMaster
     {
-      public  String Insert(CaseDetail CaseDetail);
-       public bool Update(CaseDetail CaseDetail);
+        bool Update(Classparam Classparam);
+        bool Save(Classparam Classparam);
     }
 }
+

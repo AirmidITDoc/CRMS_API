@@ -33,14 +33,15 @@ namespace HIMS.API.Controllers.Transaction
         public readonly I_Registration _Registration;
         public readonly I_Bill _Bill;
         public readonly I_CaseDetail _Case_Detail;
-
-
+        public readonly I_ClassMaster _ClassMaster;
+        public readonly I_ConcessionReasion _ConcessionReasion;
+        public readonly I_ServiceMaster _ServiceMaster;
         public OutPatientController(
          
             //I_Dashboard Dashboard,
            I_DynamicExecuteSchedule dynamicExecuteSchedule,
            I_Configsetting configsetting,I_Department department,I_DepartmentType departmentType,I_Registration registration,I_Bill bill, I_CaseDetail caseDetail
-         
+         ,I_ClassMaster classMaster,I_ConcessionReasion concessionReasion,I_ServiceMaster serviceMaster
               )
        {
              
@@ -53,8 +54,9 @@ namespace HIMS.API.Controllers.Transaction
             this._Registration = registration;
             this._Bill = bill;
             this._Case_Detail = caseDetail;
-
-
+            this._ClassMaster = classMaster;
+            this._ConcessionReasion = concessionReasion;
+            this._ServiceMaster = serviceMaster;
         }
 
         //SS_RoleTemplateMaster
@@ -168,6 +170,66 @@ namespace HIMS.API.Controllers.Transaction
             return Ok(menuMaster);
         }
 
+        [HttpPost("CaseDetailUpdate")]
+        public IActionResult CaseDetailUpdate(CaseDetail CaseDetail)
+        {
+            var menuMaster = _Case_Detail.Update(CaseDetail);
+            //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
+            return Ok(menuMaster);
+        }
+
+        // Class Master Insert & Update
+        [HttpPost("ClassSave")]
+        public IActionResult ClassSave(Classparam Classparam)
+        {
+            var menuMaster = _ClassMaster.Save(Classparam);
+            //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("ClassUpdate")]
+        public IActionResult ClassUpdate(Classparam Classparam)
+        {
+            var menuMaster = _ClassMaster.Update(Classparam);
+            //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
+            return Ok(menuMaster);
+        }
+
+        // Concession Master Insert & Update
+        [HttpPost("ConcessionSave")]
+        public IActionResult ConcessionSave(ConcessionReasionParam ConcessionReasionParam)
+        {
+            var menuMaster = _ConcessionReasion.Save(ConcessionReasionParam);
+            //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("ConcessionUpdate")]
+        public IActionResult ConcessionUpdate(ConcessionReasionParam ConcessionReasionParam)
+        {
+            var menuMaster = _ConcessionReasion.Update(ConcessionReasionParam);
+            //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
+            return Ok(menuMaster);
+        }
+
+
+
+        // Service Master Insert & Update
+        [HttpPost("ServiceSave")]
+        public IActionResult ServiceSave(ServiceMasterParam ServiceMasterParam)
+        {
+            var menuMaster = _ServiceMaster.Save(ServiceMasterParam);
+            //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("ServiceUpdate")]
+        public IActionResult ServiceUpdate(ServiceMasterParam ServiceMasterParam)
+        {
+            var menuMaster = _ServiceMaster.Update(ServiceMasterParam);
+            //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
+            return Ok(menuMaster);
+        }
 
     }
 

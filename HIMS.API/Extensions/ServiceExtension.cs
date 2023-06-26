@@ -91,7 +91,7 @@ namespace HIMS.API.Extensions
             services.AddTransient<I_CountryMaster, R_CountryMaster>();
             services.AddTransient<I_ReligienMaster, R_ReliginMaster>();
             services.AddTransient<I_CaseDetail, R_CaseDetail>();
-            
+            services.AddTransient<I_DoctorMaster, R_DoctorMaster>();
 
             services.AddTransient<I_AreaMaster, R_AreaMaster>();
             services.AddTransient<I_CityMaster, R_CityMaster>();
@@ -99,8 +99,16 @@ namespace HIMS.API.Extensions
             services.AddTransient<I_ReligienMaster, R_ReliginMaster>();
            // services.AddTransient<I_RelationshipMaster, R_RelationshipMaster>(); 
             services.AddTransient<I_StateMaster, R_StateMaster>();
-           // services.AddTransient<I_CaseDetail, R_CaseDetail>();
+            // services.AddTransient<I_CaseDetail, R_CaseDetail>();
 
+            services.AddTransient<I_ClassMaster, R_ClassMaster>();
+            services.AddTransient<I_ConcessionReasion, R_ConcessionReasion>();
+            services.AddTransient<I_CompanyMaster, R_CompanyMaster>();
+            services.AddTransient<I_ServiceMaster, R_ServiceMaster>();
+            services.AddTransient<I_BankMaster, R_BankMaster>();
+            services.AddTransient<I_PatientType, R_PatientType>();
+            services.AddTransient<I_DoctorTypeMaster, R_DoctorTypeMaster>();
+            services.AddTransient<I_CompanyType, R_CompanyType>();
         }
 
         public static void AddMyAuthentication(this IServiceCollection services, IConfiguration configuration)
