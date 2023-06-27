@@ -109,6 +109,7 @@ namespace HIMS.API.Extensions
             services.AddTransient<I_PatientType, R_PatientType>();
             services.AddTransient<I_DoctorTypeMaster, R_DoctorTypeMaster>();
             services.AddTransient<I_CompanyType, R_CompanyType>();
+            services.AddTransient<I_Payment, R_Payment>();
         }
 
         public static void AddMyAuthentication(this IServiceCollection services, IConfiguration configuration)

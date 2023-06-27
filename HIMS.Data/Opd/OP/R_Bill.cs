@@ -34,13 +34,6 @@ namespace HIMS.Data.Opd.OP
                 Direction = ParameterDirection.Output
             };
 
-            var outputId3 = new SqlParameter
-            {
-                SqlDbType = SqlDbType.BigInt,
-                ParameterName = "@PaymentId",
-                Value = 0,
-                Direction = ParameterDirection.Output
-            };
 
             var VarChargeID = new SqlParameter
             {
@@ -103,13 +96,10 @@ namespace HIMS.Data.Opd.OP
             }
 
             //IPBillingParams.BillDetailsInsert.BillNo = (int)Convert.ToInt64(BillNo);
-            var disc7 = BillParam.OPInsertPayment.ToDictionary();
-            disc7.Remove("PaymentId");
-            disc7["BillNo"] = (int)Convert.ToInt64(BillNo);
-             ExecNonQueryProcWithOutSaveChanges("insert_Payment_New_1", disc7,outputId3);
 
             _unitofWork.SaveChanges();
             return BillNo;
+
         }
 
       

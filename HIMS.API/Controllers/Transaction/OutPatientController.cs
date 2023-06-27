@@ -36,12 +36,13 @@ namespace HIMS.API.Controllers.Transaction
         public readonly I_ClassMaster _ClassMaster;
         public readonly I_ConcessionReasion _ConcessionReasion;
         public readonly I_ServiceMaster _ServiceMaster;
+        public readonly I_Payment _Payment;
         public OutPatientController(
          
             //I_Dashboard Dashboard,
            I_DynamicExecuteSchedule dynamicExecuteSchedule,
            I_Configsetting configsetting,I_Department department,I_DepartmentType departmentType,I_Registration registration,I_Bill bill, I_CaseDetail caseDetail
-         ,I_ClassMaster classMaster,I_ConcessionReasion concessionReasion,I_ServiceMaster serviceMaster
+         ,I_ClassMaster classMaster,I_ConcessionReasion concessionReasion,I_ServiceMaster serviceMaster,I_Payment payment
               )
        {
              
@@ -57,6 +58,7 @@ namespace HIMS.API.Controllers.Transaction
             this._ClassMaster = classMaster;
             this._ConcessionReasion = concessionReasion;
             this._ServiceMaster = serviceMaster;
+            this._Payment = payment;
         }
 
         //SS_RoleTemplateMaster
@@ -228,6 +230,16 @@ namespace HIMS.API.Controllers.Transaction
         {
             var menuMaster = _ServiceMaster.Update(ServiceMasterParam);
             //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
+            return Ok(menuMaster);
+        }
+
+
+        // Payment Master Insert & Update
+        [HttpPost("PaymentSave")]
+        public IActionResult PaymentSave(PaymentParam PaymentParam)
+        {
+            var menuMaster = _Payment.Save(PaymentParam);
+            
             return Ok(menuMaster);
         }
 
