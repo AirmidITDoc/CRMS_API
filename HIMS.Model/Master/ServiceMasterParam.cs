@@ -52,8 +52,8 @@ namespace HIMS.Model.Master
 
     public class ServiceDetDelete
     {
-        public int ServiceId { get; set; }
-        public int TariffId { get; set; }
+        public int Id { get; set; }
+      //  public int TariffId { get; set; }
 
 
     }

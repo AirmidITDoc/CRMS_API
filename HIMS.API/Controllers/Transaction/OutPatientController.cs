@@ -217,7 +217,7 @@ namespace HIMS.API.Controllers.Transaction
         }
 
 
-
+/*
         // Service Master Insert & Update
         [HttpPost("ServiceSave")]
         public IActionResult ServiceSave(ServiceMasterParam ServiceMasterParam)
@@ -234,7 +234,7 @@ namespace HIMS.API.Controllers.Transaction
             //  var ServiceSave = _BankMasterResp.Save(bankMasterParams);
             return Ok(menuMaster);
         }
-
+*/
 
         // Payment Master Insert & Update
         [HttpPost("PaymentSave")]

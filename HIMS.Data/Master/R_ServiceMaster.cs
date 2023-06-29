@@ -51,7 +51,8 @@ namespace HIMS.Data.Master
 
             //Delete Service Details
             var S_Det = ServiceMasterParam.ServiceDetDelete.ToDictionary();
-            //ExecNonQueryProcWithOutSaveChanges("Ps_Delete_M_ServiceDetail", S_Det);
+            S_Det["Id"] = dic["ServiceId"];
+            ExecNonQueryProcWithOutSaveChanges("Delete_ServiceDetail", S_Det);
 
             //add ServiceDetails
             foreach (var a in ServiceMasterParam.ServiceDetailInsert)
