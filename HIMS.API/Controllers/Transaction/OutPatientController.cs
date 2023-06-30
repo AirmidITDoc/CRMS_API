@@ -104,7 +104,7 @@ namespace HIMS.API.Controllers.Transaction
 
 
         //Department
-        [HttpPut("DepartmentInsert")]
+        [HttpPost("DepartmentInsert")]
         public IActionResult DepartmentInsert(DepartmentParam DepartmentParam)
         {
             var Id = _Department.Insert(DepartmentParam);
@@ -113,7 +113,7 @@ namespace HIMS.API.Controllers.Transaction
 
 
         //
-        [HttpPut("DepartmentUpdate")]
+        [HttpPost("DepartmentUpdate")]
         public IActionResult UpdateConfigSetting(DepartmentParam DepartmentParam)
         {
             var SSR = _Department.Update(DepartmentParam);
@@ -122,7 +122,7 @@ namespace HIMS.API.Controllers.Transaction
 
 
         //DocDepatType
-        [HttpPut("DocDeparttmentTypeInsert")]
+        [HttpPost("DocDeparttmentTypeInsert")]
         public IActionResult DocDeparttmentTypeInsert(DepartmentTypeParam DepartmentTypeParam)
         {
             var SSR = _DepartmentType.Insert(DepartmentTypeParam);
@@ -131,7 +131,7 @@ namespace HIMS.API.Controllers.Transaction
 
 
         //
-        [HttpPut("DocDeparttmentTypeUpdate")]
+        [HttpPost("DocDeparttmentTypeUpdate")]
         public IActionResult DocDeparttmentTypeUpdate(DepartmentTypeParam DepartmentTypeParam)
         {
             var SSR = _DepartmentType.Update(DepartmentTypeParam);
@@ -140,7 +140,7 @@ namespace HIMS.API.Controllers.Transaction
 
 
         //Registration
-        [HttpPut("RegistrationInsert")]
+        [HttpPost("RegistrationInsert")]
         public IActionResult Registration(RegistrationParam RegistrationParam)
         {
             var SSR = _Registration.Insert(RegistrationParam);
@@ -149,7 +149,7 @@ namespace HIMS.API.Controllers.Transaction
 
 
         //
-        [HttpPut("RegistrationUpdate")]
+        [HttpPost("RegistrationUpdate")]
         public IActionResult RegistrationUpdate(RegistrationParam RegistrationParam)
         {
             var SSR = _Registration.Update(RegistrationParam);
@@ -157,7 +157,7 @@ namespace HIMS.API.Controllers.Transaction
         }
 
         //Bill
-        [HttpPut("BillInsert")]
+        [HttpPost("BillInsert")]
         public IActionResult BillInsert(BillParam BillParam)
         {
             var SSR = _Bill.Insert(BillParam);
