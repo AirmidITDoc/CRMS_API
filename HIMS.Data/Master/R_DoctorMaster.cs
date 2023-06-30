@@ -18,7 +18,6 @@ namespace HIMS.Data.Master
         public string Insert(DoctorMasterparam DoctorMasterparam)
         {
             //throw new NotImplementedException();
-
             var outputId = new SqlParameter
             {
                 SqlDbType = SqlDbType.BigInt,
@@ -26,9 +25,9 @@ namespace HIMS.Data.Master
                 Value = 0,
                 Direction = ParameterDirection.Output
             };
-            var disc1 = DoctorMasterparam.DoctorMasterInsert.ToDictionary();
+            var disc1 = DoctorMasterparam.InsertDoctorMaster.ToDictionary();
             disc1.Remove("DoctorId");
-            var doctorId = ExecNonQueryProcWithOutSaveChanges("insert_DoctorMaster_1", disc1, outputId);
+            var doctorId = ExecNonQueryProcWithOutSaveChanges("Insert_DoctorMaster_1", disc1, outputId);
 
             //add DoctorDetails
 
@@ -48,12 +47,12 @@ namespace HIMS.Data.Master
         {
             // throw new NotImplementedException();
 
-            var disc1 = DoctorMasterparam.DoctorMasterUpdate.ToDictionary();
+            var disc1 = DoctorMasterparam.UpdateDoctorMaster.ToDictionary();
             ExecNonQueryProcWithOutSaveChanges("update_DoctorMaster_1", disc1);
 
 
-          /*  var D_Det = DoctorMasterparam.DeleteAssignDoctorToDepartment.ToDictionary();
-            ExecNonQueryProcWithOutSaveChanges("ps_Delete_AssignDoctorToDepartment", D_Det);*/
+            var D_Det = DoctorMasterparam.DeleteAssignDoctorToDepartment.ToDictionary();
+            ExecNonQueryProcWithOutSaveChanges("Delete_AssignDoctorToDepartment", D_Det);
 
 
             foreach (var a in DoctorMasterparam.AssignDoctorDepartmentDet)

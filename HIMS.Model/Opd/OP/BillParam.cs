@@ -27,7 +27,7 @@ namespace HIMS.Model.Opd.OP
         public float BalanceAmt { get; set; }
         public DateTime BillDate { get; set; }
         public int OPD_IPD_Type { get; set; }
-        public int CreatedBy { get; set; }
+        public int AddedBy { get; set; }
         public float TotalAdvanceAmount { get; set; }
         public DateTime BillTime { get; set; }
         public int ConcessionReasonId { get; set; }
@@ -40,10 +40,10 @@ namespace HIMS.Model.Opd.OP
         public int InterimOrFinal { get; set; }
         public int CompanyRefNo { get; set; }
         public int ConcessionAuthorizationName { get; set; }
-        public bool IsBillCheck { get; set; }
-        public float SpeTaxPer { get; set; }
-        public float SpeTaxAmount { get; set; }
-        public bool IsBillShrHold { get; set; }
+      //  public bool IsBillCheck { get; set; }
+        public float TaxPer { get; set; }
+        public float TaxAmount { get; set; }
+        public int CashCounterId { get; set; }
         public string DiscComments { get; set; }
     }
 
