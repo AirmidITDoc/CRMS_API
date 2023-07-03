@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using HIMS.Data;
 using HIMS.Data.Master;
+using HIMS.Data.Master.Billing;
 using HIMS.Data.Opd.OP;
 using HIMS.Model;
 using HIMS.Model.Master;
+using HIMS.Model.Master.Billing;
 using HIMS.Model.Opd.OP;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,19 +31,27 @@ namespace HIMS.API.Controllers.Master
         public readonly I_ReligienMaster _ReligienMaster;
         //  public readonly I_RelationshipMaster _RelationshipMaster;
         public readonly I_DoctorMaster _DoctorMaster;
+        public readonly I_PrefixMaster _PrefixMaster;
+        public readonly I_GenderMaster _GenderMaster;
+        public readonly I_MaritalStatusMaster _MaritalStatusMaster;
 
         public readonly I_CompanyMaster _CompanyMaster;
         public readonly I_BankMaster _BankMaster;
         public readonly I_ServiceMaster _ServiceMaster;
         public readonly I_DoctorTypeMaster _DoctorTypeMaster;
         public readonly I_PatientType _PatientType;
-        public readonly I_CompanyType _CompanyType;
+        public readonly I_CompanyTypeMaster _CompanyType;
+        public readonly I_CashCounterMaster _CashCounterMaster;
+        public readonly I_TariffMaster _TariffMaster;
+        public readonly I_GroupMaster _GroupMaster;
+        public readonly I_SubGroupMaster _SubGroupMaster;
         public MasterController(I_MenuMaster menuMaster,
             
             I_MenuMasterDetails menuMasterDetails,I_MenuMasterDetails_Details menuMasterDetails_Details,I_AreaMaster areaMaster,
             I_StateMaster stateMaster,I_CountryMaster countryMaster,I_ReligienMaster religienMaster,I_CityMaster cityMaster,I_DoctorMaster doctorMaster,
             I_CompanyMaster companyMaster,I_BankMaster bankMaster,I_ServiceMaster serviceMaster,I_DoctorTypeMaster doctorTypeMaster,I_PatientType patientType,
-            I_CompanyType companyType
+            I_CompanyTypeMaster companyType, I_CashCounterMaster counterMaster,I_TariffMaster tariffMaster,I_GroupMaster groupMaster,I_SubGroupMaster subGroupMaster,
+            I_GenderMaster genderMaster,I_PrefixMaster prefixMaster,I_MaritalStatusMaster maritalStatusMaster
             )
         {
            
@@ -61,6 +71,16 @@ namespace HIMS.API.Controllers.Master
             this._PatientType = patientType;
             this._DoctorTypeMaster = doctorTypeMaster;
             this._CompanyType = companyType;
+            this._CashCounterMaster = counterMaster;
+            this._TariffMaster = tariffMaster;
+
+            this._GroupMaster = groupMaster;
+            this._SubGroupMaster = subGroupMaster;
+
+            this._PrefixMaster = prefixMaster;
+
+            this._GenderMaster = genderMaster;
+            this._MaritalStatusMaster = maritalStatusMaster;
         }
 
         /* [HttpPost("ServiceSave")]
@@ -108,6 +128,51 @@ namespace HIMS.API.Controllers.Master
         }*/
 
 
+        // Prefix Master Insert & Update
+        [HttpPost("PrefixSave")]
+        public IActionResult PrefixSave(PrefixMasterParams PrefixMasterParams)
+        {
+            var Master = _PrefixMaster.Save(PrefixMasterParams);
+            return Ok(Master);
+        }
+
+        [HttpPost("PrefixUpdate")]
+        public IActionResult PrefixUpdate(PrefixMasterParams PrefixMasterParams)
+        {
+            var menuMaster = _PrefixMaster.Update(PrefixMasterParams);
+            return Ok(menuMaster);
+        }
+
+        // Gender Master Insert & Update
+        [HttpPost("GenderSave")]
+        public IActionResult GenderSave(GenderMasterParams GenderMasterParams)
+        {
+            var Master = _GenderMaster.Save(GenderMasterParams);
+            return Ok(Master);
+        }
+
+        [HttpPost("GenderUpdate")]
+        public IActionResult GenderUpdate(GenderMasterParams GenderMasterParams)
+        {
+            var menuMaster = _GenderMaster.Update(GenderMasterParams);
+            return Ok(menuMaster);
+        }
+
+
+        // MaritalStatus Master Insert & Update
+        [HttpPost("MaritalStatusSave")]
+        public IActionResult MaritalStatusSave(MaritalStatusMasterParams MaritalStatusMasterParams)
+        {
+            var Master = _MaritalStatusMaster.Save(MaritalStatusMasterParams);
+            return Ok(Master);
+        }
+
+        [HttpPost("MaritalStatusUpdate")]
+        public IActionResult MaritalStatusUpdate(MaritalStatusMasterParams MaritalStatusMasterParams)
+        {
+            var menuMaster = _MaritalStatusMaster.Update(MaritalStatusMasterParams);
+            return Ok(menuMaster);
+        }
 
         // Area Master Insert & Update
         [HttpPost("AreaSave")]
@@ -237,32 +302,32 @@ namespace HIMS.API.Controllers.Master
         }
         // Company Master Insert & Update
         [HttpPost("CompanySave")]
-        public IActionResult CompanySave(CompanyMasterparam CompanyMasterparam)
+        public IActionResult CompanySave(CompanyMasterParams CompanyMasterParams)
         {
-            var menuMaster = _CompanyMaster.Save(CompanyMasterparam);
+            var menuMaster = _CompanyMaster.Save(CompanyMasterParams);
             return Ok(menuMaster);
         }
 
         [HttpPost("CompanyUpdate")]
-        public IActionResult CompanyUpdate(CompanyMasterparam CompanyMasterparam)
+        public IActionResult CompanyUpdate(CompanyMasterParams CompanyMasterParams)
         {
-            var menuMaster = _CompanyMaster.Update(CompanyMasterparam);
+            var menuMaster = _CompanyMaster.Update(CompanyMasterParams);
             return Ok(menuMaster);
         }
 
 
         // CompanyType Master Insert & Update
         [HttpPost("CompanyTypeSave")]
-        public IActionResult CompanyTypeSave(CompanyTypeParam CompanyTypeParam)
+        public IActionResult CompanyTypeSave(CompanyTypeMasterParams CompanyTypeMasterParams)
         {
-            var menuMaster = _CompanyType.Save(CompanyTypeParam);
+            var menuMaster = _CompanyType.Save(CompanyTypeMasterParams);
             return Ok(menuMaster);
         }
 
         [HttpPost("CompanyTypeUpdate")]
-        public IActionResult CompanyTypeUpdate(CompanyTypeParam CompanyTypeParam)
+        public IActionResult CompanyTypeUpdate(CompanyTypeMasterParams CompanyTypeMasterParams)
         {
-            var menuMaster = _CompanyType.Update(CompanyTypeParam);
+            var menuMaster = _CompanyType.Update(CompanyTypeMasterParams);
             return Ok(menuMaster);
         }
 
@@ -271,33 +336,97 @@ namespace HIMS.API.Controllers.Master
 
         // Service Master Insert & Update
         [HttpPost("ServiceSave")]
-        public IActionResult ServiceSave(ServiceMasterParam ServiceMasterParam)
+        public IActionResult ServiceSave(ServiceMasterParams ServiceMasterParams)
         {
-            var menuMaster = _ServiceMaster.Save(ServiceMasterParam);
+            var menuMaster = _ServiceMaster.Save(ServiceMasterParams);
             return Ok(menuMaster);
         }
 
         [HttpPost("ServiceUpdate")]
-        public IActionResult ServiceUpdate(ServiceMasterParam ServiceMasterParam)
+        public IActionResult ServiceUpdate(ServiceMasterParams ServiceMasterParams)
         {
-            var menuMaster = _ServiceMaster.Update(ServiceMasterParam);
+            var menuMaster = _ServiceMaster.Update(ServiceMasterParams);
             return Ok(menuMaster);
         }
 
         // Bank Master Insert & Update
         [HttpPost("BankSave")]
-        public IActionResult BankSave(BankMasterParam BankMasterParam)
+        public IActionResult BankSave(BankMasterParams BankMasterParam)
         {
             var menuMaster = _BankMaster.Save(BankMasterParam);
             return Ok(menuMaster);
         }
 
         [HttpPost("BankUpdate")]
-        public IActionResult ServiceUpdate(BankMasterParam BankMasterParam)
+        public IActionResult ServiceUpdate(BankMasterParams BankMasterParams)
         {
-            var menuMaster = _BankMaster.Update(BankMasterParam);
+            var menuMaster = _BankMaster.Update(BankMasterParams);
             return Ok(menuMaster);
         }
+
+        // Traiff Master Insert & Update
+        [HttpPost("TariffSave")]
+        public IActionResult TariffSave(TariffMasterParams TariffMasterParams)
+        {
+            var menuMaster = _TariffMaster.Save(TariffMasterParams);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("TariffUpdate")]
+        public IActionResult TariffUpdate(TariffMasterParams TariffMasterParams)
+        {
+            var menuMaster = _TariffMaster.Update(TariffMasterParams);
+            return Ok(menuMaster);
+        }
+
+        // CashCounter Master Insert & Update
+        [HttpPost("CashCounterSave")]
+        public IActionResult CashCounterSave(CashCounterMasterParams CashCounter)
+        {
+            var menuMaster = _CashCounterMaster.Save(CashCounter);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("CashCounterUpdate")]
+        public IActionResult CashCounterUpdate(CashCounterMasterParams CashCounter)
+        {
+            var menuMaster = _CashCounterMaster.Update(CashCounter);
+            return Ok(menuMaster);
+        }
+
+        // Group Master Insert & Update
+        [HttpPost("GroupSave")]
+        public IActionResult GroupSave(GroupMasterParams GroupMasterParams)
+        {
+            var menuMaster = _GroupMaster.Save(GroupMasterParams);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("GroupUpdate")]
+        public IActionResult GroupUpdate(GroupMasterParams GroupMasterParams)
+        {
+            var menuMaster = _GroupMaster.Update(GroupMasterParams);
+            return Ok(menuMaster);
+        }
+
+
+        // SubGroup Master Insert & Update
+        [HttpPost("SubGroupSave")]
+        public IActionResult SubGroupSave(SubGroupMasterParams SubGroupMasterParams)
+        {
+            var menuMaster = _SubGroupMaster.Save(SubGroupMasterParams);
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("SubGroupUpdate")]
+        public IActionResult SubGroupUpdate(SubGroupMasterParams SubGroupMasterParams)
+        {
+            var menuMaster = _SubGroupMaster.Update(SubGroupMasterParams);
+            return Ok(menuMaster);
+        }
+
+
+
 
         // PatientType Master Insert & Update
         [HttpPost("PatientTypeSave")]

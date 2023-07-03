@@ -18,6 +18,8 @@ using System.Net;
 using System.Text;
 using HIMS.Data.Opd.OP;
 using HIMS.Data.Transaction;
+using HIMS.Data.Master.Billing;
+
 namespace HIMS.API.Extensions
 {
     public static class ServiceExtension
@@ -101,16 +103,23 @@ namespace HIMS.API.Extensions
             services.AddTransient<I_StateMaster, R_StateMaster>();
             // services.AddTransient<I_CaseDetail, R_CaseDetail>();
 
-            services.AddTransient<I_ClassMaster, R_ClassMaster>();
+            services.AddTransient<I_ClassMaster,R_ClassMaster>();
             services.AddTransient<I_ConcessionReasion, R_ConcessionReasion>();
             services.AddTransient<I_CompanyMaster, R_CompanyMaster>();
             services.AddTransient<I_ServiceMaster, R_ServiceMaster>();
             services.AddTransient<I_BankMaster, R_BankMaster>();
             services.AddTransient<I_PatientType, R_PatientType>();
             services.AddTransient<I_DoctorTypeMaster, R_DoctorTypeMaster>();
-            services.AddTransient<I_CompanyType, R_CompanyType>();
+            services.AddTransient<I_CompanyTypeMaster, R_CompanyTypeMaster>();
             services.AddTransient<I_Payment, R_Payment>();
             services.AddTransient<I_VisitMaster, R_VisitMaster>();
+            services.AddTransient<I_CashCounterMaster, R_CashCounterMaster>();
+            services.AddTransient<I_TariffMaster, R_TariffMaster>();
+            services.AddTransient<I_GroupMaster, R_GroupMaster>();
+            services.AddTransient<I_SubGroupMaster, R_SubGroupMaster>();
+            services.AddTransient<I_PrefixMaster,R_PrefixMaster>();
+            services.AddTransient<I_MaritalStatusMaster, R_MaritalStatusMaster>();
+            services.AddTransient<I_GenderMaster, R_GenderMaster>();
         }
 
         public static void AddMyAuthentication(this IServiceCollection services, IConfiguration configuration)

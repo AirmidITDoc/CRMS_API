@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HIMS.Model.Master
 {
-   public class BankMasterParam
+   public class BankMasterParams
     {
         public BankMasterInsert BankMasterInsert { get; set; }
         public BankMasterUpdate BankMasterUpdate { get; set; }
@@ -13,7 +13,7 @@ namespace HIMS.Model.Master
 
     public class BankMasterInsert
     {
-
+       
         public String BankName { get; set; }
         public int AddedBy { get; set; }
         public Boolean IsDeleted { get; set; }

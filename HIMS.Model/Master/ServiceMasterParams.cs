@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HIMS.Model.Master
 {
-  public  class ServiceMasterParam
+    public class ServiceMasterParams
     {
         public ServiceMasterInsert ServiceMasterInsert { get; set; }
 
@@ -16,8 +16,8 @@ namespace HIMS.Model.Master
 
     public class ServiceMasterInsert
     {
-
-        public int GroupId { get; set; }
+       
+        public int GroupId { get; set; } 
         public String ServiceShortDesc { get; set; }
         public String ServiceName { get; set; }
         public float Price { get; set; }
@@ -47,14 +47,14 @@ namespace HIMS.Model.Master
         public int ClassId { get; set; }
         public int ClassRate { get; set; }
         public DateTime EffectiveDate { get; set; }
-
+        
     }
 
     public class ServiceDetDelete
     {
-        public int Id { get; set; }
-      //  public int TariffId { get; set; }
-
+        public int ServiceId { get; set; }
+        public int TariffId { get; set; }
+        
 
     }
 

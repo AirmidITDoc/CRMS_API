@@ -6,6 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Master\NewFolder1\**" />
+    <Compile Remove="Master\NewFolder\**" />
+    <EmbeddedResource Remove="Master\NewFolder1\**" />
+    <EmbeddedResource Remove="Master\NewFolder\**" />
+    <None Remove="Master\NewFolder1\**" />
+    <None Remove="Master\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 

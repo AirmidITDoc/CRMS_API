@@ -1,5 +1,6 @@
 ﻿using HIMS.Common.Utility;
 using HIMS.Model.Master;
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,17 +8,18 @@ using System.Data.SqlClient;
 using System.Text;
 
 namespace HIMS.Data.Master
-{
-   public class R_ServiceMaster:GenericRepository,I_ServiceMaster
+{ 
+   public class R_ServiceMaster :GenericRepository ,I_ServiceMaster
     {
         public R_ServiceMaster(IUnitofWork unitofWork) : base(unitofWork)
         {
             //transaction and connection is open when you inject unitofwork
         }
 
-        public bool Save(ServiceMasterParam ServiceMasterParam)
+         
+        public bool Save(ServiceMasterParams ServiceMasterParams)
         {
-            //throw new NotImplementedException();
+            //Service master insert
             var outputId = new SqlParameter
             {
                 SqlDbType = SqlDbType.BigInt,
@@ -25,13 +27,13 @@ namespace HIMS.Data.Master
                 Value = 0,
                 Direction = ParameterDirection.Output
             };
-            var dic = ServiceMasterParam.ServiceMasterInsert.ToDictionary();
+            var dic = ServiceMasterParams.ServiceMasterInsert.ToDictionary();
             dic.Remove("ServiceId");
             var ServiceId = ExecNonQueryProcWithOutSaveChanges("insert_ServiceMaster_1", dic, outputId);
-
-
+            
+            
             // Service Detail Insert
-            foreach (var a in ServiceMasterParam.ServiceDetailInsert)
+            foreach(var a in ServiceMasterParams.ServiceDetailInsert)
             {
                 var d = a.ToDictionary();
                 d["ServiceId"] = ServiceId;
@@ -42,20 +44,19 @@ namespace HIMS.Data.Master
             return true;
         }
 
-        public bool Update(ServiceMasterParam ServiceMasterParam)
-        {
-            // throw new NotImplementedException();
+          public bool Update(ServiceMasterParams ServiceMasterParams)
+           {
 
-            var dic = ServiceMasterParam.ServiceMasterUpdate.ToDictionary();
+            //Update Service
+            var dic = ServiceMasterParams.ServiceMasterUpdate.ToDictionary();
             ExecNonQueryProcWithOutSaveChanges("update_ServiceMaster_1", dic);
 
             //Delete Service Details
-            var S_Det = ServiceMasterParam.ServiceDetDelete.ToDictionary();
-            S_Det["Id"] = dic["ServiceId"];
-            ExecNonQueryProcWithOutSaveChanges("Delete_ServiceDetail", S_Det);
+            var S_Det = ServiceMasterParams.ServiceDetDelete.ToDictionary();
+            ExecNonQueryProcWithOutSaveChanges("Ps_Delete_M_ServiceDetail", S_Det);
 
             //add ServiceDetails
-            foreach (var a in ServiceMasterParam.ServiceDetailInsert)
+            foreach (var a in ServiceMasterParams.ServiceDetailInsert)
             {
                 var disc = a.ToDictionary();
                 ExecNonQueryProcWithOutSaveChanges("insert_ServiceDetail_1", disc);
@@ -63,8 +64,8 @@ namespace HIMS.Data.Master
 
             _unitofWork.SaveChanges();
             return true;
+
         }
 
-       
     }
 }

@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HIMS.Model.Master
+namespace HIMS.Model.Master.Billing
 {
-  public  class CompanyMasterparam
+   public class SubTpaCompanyMasterParams
     {
-        public CompanyMasterInsert CompanyMasterInsert { get; set; }
-        public CompanyMasterUpdate CompanyMasterUpdate { get; set; }
+        public SubTpaCompanyMasterInsert SubTpaCompanyMasterInsert { get; set; }
+        public SubTpaCompanyMasterUpdate SubTpaCompanyMasterUpdate { get; set; }
 
     }
 
-    public class CompanyMasterInsert
+    public class SubTpaCompanyMasterInsert
     {
-
         public int CompTypeId { get; set; }
         public String CompanyName { get; set; }
         public String Address { get; set; }
@@ -22,21 +21,17 @@ namespace HIMS.Model.Master
         public String PhoneNo { get; set; }
         public String MobileNo { get; set; }
         public String FaxNo { get; set; }
-        public int TraiffId { get; set; }
-        public Boolean IsActive { get; set; }
         public int AddedBy { get; set; }
-
-        public int UpdatedBy { get; set; }
+        public Boolean IsDeleted { get; set; }
         public Boolean IsCancelled { get; set; }
         public int IsCancelledBy { get; set; }
         public DateTime IsCancelledDate { get; set; }
-
+        
     }
 
-    public class CompanyMasterUpdate
+    public class SubTpaCompanyMasterUpdate
     {
-
-        public int CompanyId { get; set; }
+        public int SubCompanyID { get; set; }
         public int CompTypeId { get; set; }
         public String CompanyName { get; set; }
         public String Address { get; set; }
@@ -45,15 +40,12 @@ namespace HIMS.Model.Master
         public String PhoneNo { get; set; }
         public String MobileNo { get; set; }
         public String FaxNo { get; set; }
-        public int TraiffId { get; set; }
-        public Boolean IsActive { get; set; }
-
-        public int AddedBy { get; set; }
         public int UpdatedBy { get; set; }
+        public Boolean IsDeleted { get; set; }
         public Boolean IsCancelled { get; set; }
         public int IsCancelledBy { get; set; }
         public DateTime IsCancelledDate { get; set; }
-
 
     }
 }
+

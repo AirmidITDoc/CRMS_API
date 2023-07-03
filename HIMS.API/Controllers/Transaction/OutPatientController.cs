@@ -38,12 +38,13 @@ namespace HIMS.API.Controllers.Transaction
         public readonly I_ServiceMaster _ServiceMaster;
         public readonly I_Payment _Payment;
         public readonly I_VisitMaster _VisitMaster;
+       
         public OutPatientController(
          
             //I_Dashboard Dashboard,
            I_DynamicExecuteSchedule dynamicExecuteSchedule,
            I_Configsetting configsetting,I_Department department,I_DepartmentType departmentType,I_Registration registration,I_Bill bill, I_CaseDetail caseDetail
-         ,I_ClassMaster classMaster,I_ConcessionReasion concessionReasion,I_ServiceMaster serviceMaster,I_Payment payment,I_VisitMaster visitMaster
+         ,I_ClassMaster classMaster,I_ConcessionReasion concessionReasion, I_ServiceMaster serviceMaster,I_Payment payment,I_VisitMaster visitMaster
               )
        {
              

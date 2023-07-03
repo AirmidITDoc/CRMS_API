@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace HIMS.Model.Master
 {
-   public class CompanyTypeParam
+   public class CompanyTypeMasterParams
     {
         public CompanyTypeMasterInsert CompanyTypeMasterInsert { get; set; }
         public CompanyTypeMasterUpdate CompanyTypeMasterUpdate { get; set; }
@@ -21,7 +22,7 @@ namespace HIMS.Model.Master
 
     public class CompanyTypeMasterUpdate
     {
-
+        
         public int CompanyTypeId { get; set; }
         public String TypeName { get; set; }
         public Boolean IsDeleted { get; set; }

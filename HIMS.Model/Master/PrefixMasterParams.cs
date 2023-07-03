@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HIMS.Model.Master
 {
-  public  class PrefixMasterParam
+   public class PrefixMasterParams
     {
         public PrefixMasterInsert PrefixMasterInsert { get; set; }
         public PrefixMasterUpdate PrefixMasterUpdate { get; set; }

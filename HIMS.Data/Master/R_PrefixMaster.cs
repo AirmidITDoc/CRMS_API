@@ -3,38 +3,39 @@ using HIMS.Model.Master;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace HIMS.Data.Master
 {
-  public  class R_PrefixMaster:GenericRepository,I_PrefixMaster
+   public class R_PrefixMaster :GenericRepository,I_PrefixMaster
     {
         public R_PrefixMaster(IUnitofWork unitofWork) : base(unitofWork)
         {
             //transaction and connection is open when you inject unitofwork
         }
 
-        public bool Save(PrefixMasterParam PrefixMasterParam)
+        public bool Update(PrefixMasterParams PrefixMasterParams)
         {
-            // throw new NotImplementedException();
-            var disc = PrefixMasterParam.PrefixMasterInsert.ToDictionary();
-
-            ExecNonQueryProcWithOutSaveChanges("ps_Insert_M_PrefixMaster", disc);
+            var disc1 = PrefixMasterParams.PrefixMasterUpdate.ToDictionary();
+            ExecNonQueryProcWithOutSaveChanges("ps_Update_M_PrefixMaster", disc1);
 
             //commit transaction
             _unitofWork.SaveChanges();
             return true;
         }
 
-        public bool Update(PrefixMasterParam PrefixMasterParam)
+        public bool Save(PrefixMasterParams PrefixMasterParams)
         {
-            // throw new NotImplementedException();
+           // throw new NotImplementedException();
+            var disc = PrefixMasterParams.PrefixMasterInsert.ToDictionary();
 
-            var disc1 = PrefixMasterParam.PrefixMasterUpdate.ToDictionary();
-            ExecNonQueryProcWithOutSaveChanges("ps_Update_M_PrefixMaster", disc1);
+            ExecNonQueryProcWithOutSaveChanges("ps_Insert_M_PrefixMaster", disc);
 
             //commit transaction
             _unitofWork.SaveChanges();
             return true;
+
         }
     }
 }

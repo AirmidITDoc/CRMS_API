@@ -7,7 +7,7 @@ namespace HIMS.Data.Master
 {
    public interface I_PrefixMaster
     {
-        bool Update(PrefixMasterParam PrefixMasterParam);
-        bool Save(PrefixMasterParam PrefixMasterParam);
+        bool Update(PrefixMasterParams PrefixMasterParams);
+        bool Save(PrefixMasterParams PrefixMasterParams);
     }
 }

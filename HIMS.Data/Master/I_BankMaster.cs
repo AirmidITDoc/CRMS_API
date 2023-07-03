@@ -7,7 +7,7 @@ namespace HIMS.Data.Master
 {
    public interface I_BankMaster
     {
-        bool Update(BankMasterParam BankMasterParam);
-        bool Save(BankMasterParam BankMasterParam);
+        bool Update(BankMasterParams BankMasterParams);
+        bool Save(BankMasterParams BankMasterParams);
     }
 }
