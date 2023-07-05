@@ -120,6 +120,9 @@ namespace HIMS.API.Extensions
             services.AddTransient<I_PrefixMaster,R_PrefixMaster>();
             services.AddTransient<I_MaritalStatusMaster, R_MaritalStatusMaster>();
             services.AddTransient<I_GenderMaster, R_GenderMaster>();
+
+            services.AddTransient<I_CompanyDetail, R_CompanyDetail>();
+            services.AddTransient<I_InvoiceBillMapping, R_InvoiceBillMapping>();
         }
 
         public static void AddMyAuthentication(this IServiceCollection services, IConfiguration configuration)

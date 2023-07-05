@@ -38,13 +38,16 @@ namespace HIMS.API.Controllers.Transaction
         public readonly I_ServiceMaster _ServiceMaster;
         public readonly I_Payment _Payment;
         public readonly I_VisitMaster _VisitMaster;
-       
+        public readonly I_CompanyDetail _CompanyDetail;
+        public readonly I_InvoiceBillMapping _InvoiceBillMapping;
+
         public OutPatientController(
          
             //I_Dashboard Dashboard,
            I_DynamicExecuteSchedule dynamicExecuteSchedule,
            I_Configsetting configsetting,I_Department department,I_DepartmentType departmentType,I_Registration registration,I_Bill bill, I_CaseDetail caseDetail
-         ,I_ClassMaster classMaster,I_ConcessionReasion concessionReasion, I_ServiceMaster serviceMaster,I_Payment payment,I_VisitMaster visitMaster
+         ,I_ClassMaster classMaster,I_ConcessionReasion concessionReasion, I_ServiceMaster serviceMaster,I_Payment payment,I_VisitMaster visitMaster,
+           I_CompanyDetail companyDetail,I_InvoiceBillMapping invoiceBillMapping
               )
        {
              
@@ -62,6 +65,9 @@ namespace HIMS.API.Controllers.Transaction
             this._ServiceMaster = serviceMaster;
             this._Payment = payment;
             this._VisitMaster = visitMaster;
+
+            this._CompanyDetail = companyDetail;
+            this._InvoiceBillMapping = invoiceBillMapping;
         }
 
         //SS_RoleTemplateMaster
@@ -262,8 +268,41 @@ namespace HIMS.API.Controllers.Transaction
                         return Ok(menuMaster);
         }
 
+        // CompanyDetail Insert & Update
+        [HttpPost("CompanyDetailSave")]
+        public IActionResult CompanyDetailSave(CompanyDetail CompanyDetail)
+        {
+            var menuMaster = _CompanyDetail.Save(CompanyDetail);
 
-      
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("CompanyDetailUpdate")]
+        public IActionResult CompanyDetailUpdate(CompanyDetail CompanyDetail)
+        {
+            var menuMaster = _CompanyDetail.Update(CompanyDetail);
+            return Ok(menuMaster);
+        }
+
+
+
+        // InvoiceBillMappinng Insert & Update
+        [HttpPost("InvoiceBillMappinngSave")]
+        public IActionResult InvoiceBillMappinngSave(InvoiceDetailParam InvoiceDetailParam)
+        {
+            var menuMaster = _InvoiceBillMapping.Insert(InvoiceDetailParam);
+
+            return Ok(menuMaster);
+        }
+
+        [HttpPost("InvoiceBillMappinngUpdate")]
+        public IActionResult InvoiceBillMappinngUpdate(InvoiceDetailParam InvoiceDetailParam)
+        {
+            var menuMaster = _InvoiceBillMapping.Update(InvoiceDetailParam);
+            return Ok(menuMaster);
+        }
+
+
 
     }
 
