@@ -12,26 +12,26 @@ namespace HIMS.Data.CRMSTransaction
         {
             //transaction and connection is open when you inject unitofwork
         }
-        public String InsertStudySchedule(StudyScheduleParams _studyScheduleParams)
+        public bool InsertStudySchedule(StudyScheduleParams _studyScheduleParams)
         {
             //throw new NotImplementedException();
-            var outputId1 = new SqlParameter
+           /* var outputId1 = new SqlParameter
             {
                 SqlDbType = SqlDbType.BigInt,
                 ParameterName = "@StudyVisitId",
                 Value = 0,
                 Direction = ParameterDirection.Output
-            };
+            };*/
 
             foreach (var a in _studyScheduleParams.InsertStudySchedule)
             {
                 var disc5 = a.ToDictionary();
                 disc5.Remove("StudyVisitId");
-                var ChargeID = ExecNonQueryProcWithOutSaveChanges("insert_StudySchedule", disc5, outputId1);
+                var ChargeID = ExecNonQueryProcWithOutSaveChanges("insert_StudySchedule", disc5);
             }
 
             _unitofWork.SaveChanges();
-            return "Ok";
+            return true;
         }
 
         public bool UpdateStudySchedule(StudyScheduleParams _studyScheduleParams)

@@ -7,7 +7,7 @@ namespace HIMS.Data.CRMSTransaction
 {
     public interface I_StudySchedule
     {
-        public String InsertStudySchedule(StudyScheduleParams studyScheduleParams);
+        public bool InsertStudySchedule(StudyScheduleParams studyScheduleParams);
         public bool UpdateStudySchedule(StudyScheduleParams studyScheduleParams);
     }
 }

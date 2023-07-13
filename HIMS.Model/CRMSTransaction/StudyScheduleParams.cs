@@ -13,7 +13,7 @@ namespace HIMS.Model.CRMSTransaction
 
     public class InsertStudySchedule
     {
-        public int StudyVisitId { get; set; }
+    //    public int StudyVisitId { get; set; }
         public int StudyId { get; set; }
         public string VisitName { get; set; }
         public string VisitDescription { get; set; }
