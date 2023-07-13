@@ -19,6 +19,8 @@ using System.Text;
 using HIMS.Data.Opd.OP;
 using HIMS.Data.Transaction;
 using HIMS.Data.Master.Billing;
+using HIMS.Data.CRMSTransaction;
+using HIMS.Data.CRMSMaster;
 
 namespace HIMS.API.Extensions
 {
@@ -123,6 +125,19 @@ namespace HIMS.API.Extensions
 
             services.AddTransient<I_CompanyDetail, R_CompanyDetail>();
             services.AddTransient<I_InvoiceBillMapping, R_InvoiceBillMapping>();
+
+            services.AddTransient<I_StudyInformation, R_StudyInformation>();
+            services.AddTransient<I_StudyUploadDocument, R_StudyUploadDocument>();
+            services.AddTransient<I_StudySchedule, R_StudySchedule>();
+
+            services.AddTransient<I_MemberMaster, R_MemberMaster>();
+            services.AddTransient<I_CommitteeMaster, R_CommitteeMaster>();
+
+            services.AddTransient<I_CommitteeMeeting, R_CommitteeMeeting>();
+
+            services.AddTransient<I_InstitutionInformation, R_InstitutionInformation>();
+            services.AddTransient<I_SponserInformation, R_SponserInformation>();
+
         }
 
         public static void AddMyAuthentication(this IServiceCollection services, IConfiguration configuration)

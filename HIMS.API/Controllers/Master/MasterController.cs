@@ -11,6 +11,9 @@ using HIMS.Model.Master;
 using HIMS.Model.Master.Billing;
 using HIMS.Model.Opd.OP;
 using Microsoft.AspNetCore.Mvc;
+using HIMS.Model.CRMSTransaction;
+using HIMS.Data.CRMSMaster;
+using HIMS.Model.CRMSMaster;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -45,16 +48,26 @@ namespace HIMS.API.Controllers.Master
         public readonly I_TariffMaster _TariffMaster;
         public readonly I_GroupMaster _GroupMaster;
         public readonly I_SubGroupMaster _SubGroupMaster;
+
+        public readonly I_MemberMaster _MemberMaster;
+        public readonly I_CommitteeMaster _CommitteeMaster;
+
+        public readonly I_InstitutionInformation _InstitutionInformation;
+        public readonly I_SponserInformation _SponserInformation;
+
+
         public MasterController(I_MenuMaster menuMaster,
-            
-            I_MenuMasterDetails menuMasterDetails,I_MenuMasterDetails_Details menuMasterDetails_Details,I_AreaMaster areaMaster,
-            I_StateMaster stateMaster,I_CountryMaster countryMaster,I_ReligienMaster religienMaster,I_CityMaster cityMaster,I_DoctorMaster doctorMaster,
-            I_CompanyMaster companyMaster,I_BankMaster bankMaster,I_ServiceMaster serviceMaster,I_DoctorTypeMaster doctorTypeMaster,I_PatientType patientType,
-            I_CompanyTypeMaster companyType, I_CashCounterMaster counterMaster,I_TariffMaster tariffMaster,I_GroupMaster groupMaster,I_SubGroupMaster subGroupMaster,
-            I_GenderMaster genderMaster,I_PrefixMaster prefixMaster,I_MaritalStatusMaster maritalStatusMaster
-            )
+            I_MenuMasterDetails menuMasterDetails, I_MenuMasterDetails_Details menuMasterDetails_Details, I_AreaMaster areaMaster,
+            I_StateMaster stateMaster, I_CountryMaster countryMaster, I_ReligienMaster religienMaster, I_CityMaster cityMaster, I_DoctorMaster doctorMaster,
+            I_CompanyMaster companyMaster, I_BankMaster bankMaster, I_ServiceMaster serviceMaster, I_DoctorTypeMaster doctorTypeMaster, I_PatientType patientType,
+            I_CompanyTypeMaster companyType, I_CashCounterMaster counterMaster, I_TariffMaster tariffMaster, I_GroupMaster groupMaster, I_SubGroupMaster subGroupMaster,
+            I_GenderMaster genderMaster, I_PrefixMaster prefixMaster, I_MaritalStatusMaster maritalStatusMaster,
+
+            I_MemberMaster memberMaster,
+            I_CommitteeMaster committeeMaster,
+            I_InstitutionInformation institutionInformation, I_SponserInformation sponserInformation)
         {
-           
+
             this._MenuMaster = menuMaster;
             this._MenuMasterDetails = menuMasterDetails;
             this._MenuMasterDetails_Details = menuMasterDetails_Details;
@@ -62,7 +75,7 @@ namespace HIMS.API.Controllers.Master
             this._ReligienMaster = religienMaster;
             this._CityMaster = cityMaster;
             this._StateMaster = stateMaster;
-          //  this._RelationshipMaster = relationshipMaster;
+            //  this._RelationshipMaster = relationshipMaster;
             this._CountryMaster = countryMaster;
             this._DoctorMaster = doctorMaster;
             this._CompanyMaster = companyMaster;
@@ -81,6 +94,11 @@ namespace HIMS.API.Controllers.Master
 
             this._GenderMaster = genderMaster;
             this._MaritalStatusMaster = maritalStatusMaster;
+
+            this._MemberMaster = memberMaster;
+            this._CommitteeMaster = committeeMaster;
+            _InstitutionInformation = institutionInformation;
+            _SponserInformation = sponserInformation;   
         }
 
         /* [HttpPost("ServiceSave")]
@@ -436,11 +454,55 @@ namespace HIMS.API.Controllers.Master
             return Ok(menuMaster);
         }
 
-       /* [HttpPost("PatientTypeUpdate")]
-        public IActionResult PatientTypeUpdate(PatientTypeParam PatientTypeParam)
+        [HttpPost("Save_InsertMemberMaster")]
+        public IActionResult Save_InsertMemberMaster(MemberMasterParams MemberMasterParams)
         {
-            var menuMaster = _PatientType.Update(PatientTypeParam);
-            return Ok(menuMaster);
-        }*/
+            var SSR = _MemberMaster.InsertMemberMaster(MemberMasterParams);
+            return Ok(SSR);
+        }
+
+        [HttpPut("Update_UpdateMemberMaster")]
+        //[HttpPut("{id:int}")]
+        public IActionResult Update_UpdateMemberMaster(MemberMasterParams MemberMasterParams)
+        {
+            var SSR = _MemberMaster.UpdateMemberMaster(MemberMasterParams);
+            return Ok(SSR);
+        }
+
+        [HttpPost("Save_InsertCommitteeMaster")]
+        public IActionResult Save_InsertCommitteeMaster(CommitteeMasterParams committeeMasterParams)
+        {
+            var SSR = _CommitteeMaster.InsertCommitteeMaster(committeeMasterParams);
+            return Ok(SSR);
+        }
+
+
+        [HttpPost("Save_InsertInstitutionInformation")]
+        public IActionResult Save_InsertInstitutionInformation(InstitutionInformationParams institutionInformationParams)
+        {
+            var SSR = _InstitutionInformation.InsertInstitutionInformation(institutionInformationParams);
+            return Ok(SSR);
+        }
+
+        [HttpPut("Update_UpdateInstitutionInformation")]
+        public IActionResult Update_UpdateInstitutionInformation(InstitutionInformationParams institutionInformationParams)
+        {
+            var SSR = _InstitutionInformation.UpdateInstitutionInformation(institutionInformationParams);
+            return Ok(SSR);
+        }
+
+        [HttpPost("Save_InsertSponserInformation")]
+        public IActionResult Save_InsertSponserInformation(SponserInformationParams sponserInformationParams)
+        {
+            var SSR = _SponserInformation.InsertSponserInformation(sponserInformationParams);
+            return Ok(SSR);
+        }
+
+        [HttpPut("Update_UpdateSponserInformation")]
+        public IActionResult Update_UpdateSponserInformation(SponserInformationParams sponserInformationParams)
+        {
+            var SSR = _SponserInformation.UpdateSponserInformation(sponserInformationParams);
+            return Ok(SSR);
+        }
     }
 }
