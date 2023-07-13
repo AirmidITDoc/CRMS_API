@@ -359,7 +359,7 @@ namespace HIMS.API.Controllers.Master
             var menuMaster = _ServiceMaster.Save(ServiceMasterParams);
             return Ok(menuMaster);
         }
-
+        
         [HttpPost("ServiceUpdate")]
         public IActionResult ServiceUpdate(ServiceMasterParams ServiceMasterParams)
         {
