@@ -8,6 +8,7 @@ namespace HIMS.Model.CRMSTransaction
     {
         public List<InsertStudySchedule> InsertStudySchedule { get; set; }
         public List<UpdateStudySchedule> UpdateStudySchedule { get; set; }
+        public DeleteStudySchedule DeleteStudySchedule { get; set; }
 
     }
 
@@ -29,5 +30,9 @@ namespace HIMS.Model.CRMSTransaction
         public string VisitDescription { get; set; }
         public int VisitAmount { get; set; }
         public int UpdatedBy { get; set; }
+    }
+    public class DeleteStudySchedule
+    {
+        public int StudyId { get; set; }
     }
 }

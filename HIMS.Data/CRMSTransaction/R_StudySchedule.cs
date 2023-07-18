@@ -38,11 +38,23 @@ namespace HIMS.Data.CRMSTransaction
         {
             //throw new NotImplementedException();
 
-            var disc3 = _studyScheduleParams.UpdateStudySchedule.ToDictionary();
-            var No = ExecNonQueryProcWithOutSaveChanges("Update_StudySchedule", disc3);
+            var disc3 = _studyScheduleParams.DeleteStudySchedule.ToDictionary();
+            ExecNonQueryProcWithOutSaveChanges("Delete_StudySchedule", disc3);
+
+            //_unitofWork.SaveChanges();
+            //return true;
+
+            foreach (var a in _studyScheduleParams.UpdateStudySchedule)
+            {
+                var disc5 = a.ToDictionary();
+                //disc5.Remove("StudyVisitId");
+                var ChargeID = ExecNonQueryProcWithOutSaveChanges("Update_StudySchedule", disc5);
+            }
 
             _unitofWork.SaveChanges();
             return true;
+
+
         }
     }
 }
