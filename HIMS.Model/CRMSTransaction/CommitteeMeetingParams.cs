@@ -8,6 +8,8 @@ namespace HIMS.Model.CRMSTransaction
     {
         public InsertCommitteeMeeting InsertCommitteeMeeting { get; set; }
 
+        public UpdateCommitteeMeeting UpdateCommitteeMeeting { get; set; }
+
         public List<InsertCommitteeMeetingMemberDet> InsertCommitteeMeetingMemberDet { get; set; }
     }
     public class InsertCommitteeMeeting
@@ -31,4 +33,15 @@ namespace HIMS.Model.CRMSTransaction
         public int CreatedBy { get; set; }
 
     }
+    
+    public class UpdateCommitteeMeeting
+    {
+        public String Operation { get; set; }
+        public int ComittDetId { get; set; }
+        public int CommitteeId { get; set; }
+        public int MemberId { get; set; }
+        public int UpdatedBy { get; set; }
+    }
+
+
 }

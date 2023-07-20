@@ -8,5 +8,6 @@ namespace HIMS.Data.CRMSTransaction
     public interface I_CommitteeMeeting
     {
         String InsertCommitteeMeeting(CommitteeMeetingParams committeeMeetingParams);
+        bool UpdateCommitteeMeeting(CommitteeMeetingParams committeeMeetingParams);
     }
 }

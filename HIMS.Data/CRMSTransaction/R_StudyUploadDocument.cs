@@ -28,6 +28,15 @@ namespace HIMS.Data.CRMSTransaction
                 Direction = ParameterDirection.Output
             };
 
+            foreach (var a in _StudyUploadDocumentParams.InsertStudyUploadDocument)
+            {
+              /*  var disc3 = _StudyUploadDocumentParams.InsertStudyUploadDocument.ToDictionary();
+                disc3.Remove("StudyDocId");
+                var No = ExecNonQueryProcWithOutSaveChanges("insert_StudyUploadDocument", disc3, outputId1);*/
+
+            }
+
+
             var disc3 = _StudyUploadDocumentParams.InsertStudyUploadDocument.ToDictionary();
             disc3.Remove("StudyDocId");
             var No = ExecNonQueryProcWithOutSaveChanges("insert_StudyUploadDocument", disc3, outputId1);

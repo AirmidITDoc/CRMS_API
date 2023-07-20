@@ -137,6 +137,7 @@ namespace HIMS.API.Extensions
 
             services.AddTransient<I_InstitutionInformation, R_InstitutionInformation>();
             services.AddTransient<I_SponserInformation, R_SponserInformation>();
+            services.AddTransient<I_StudyService, R_StudyService>();
 
         }
 

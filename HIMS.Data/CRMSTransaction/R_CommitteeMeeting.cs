@@ -42,5 +42,32 @@ namespace HIMS.Data.CRMSTransaction
             return CommitteeMeetingId;
 
         }
+
+
+        public bool UpdateCommitteeMeeting(CommitteeMeetingParams committeeMeetingParams)
+        {
+            //throw new NotImplementedException();
+          /*  var outputId1 = new SqlParameter
+            {
+                SqlDbType = SqlDbType.BigInt,
+                ParameterName = "@CommitteeMeetingId",
+                Value = 0,
+                Direction = ParameterDirection.Output
+            };*/
+
+            var disc3 = committeeMeetingParams.InsertCommitteeMeeting.ToDictionary();
+            var CommitteeMeetingId = ExecNonQueryProcWithOutSaveChanges("insert_T_CommitteeMeeting", disc3);
+
+            foreach (var a in committeeMeetingParams.InsertCommitteeMeetingMemberDet)
+            {
+                var disc5 = a.ToDictionary();
+                disc5["CommitteeMeetingId"] = CommitteeMeetingId;
+                ExecNonQueryProcWithOutSaveChanges("Update_CommitteeMemberDetails", disc5);
+            }
+
+            _unitofWork.SaveChanges();
+            return true;
+
+        }
     }
 }

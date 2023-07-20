@@ -6,7 +6,7 @@ namespace HIMS.Model.CRMSTransaction
 {
     public class StudyUploadDocumentParams
     {
-        public InsertStudyUploadDocument InsertStudyUploadDocument{ get; set;}
+        public List<InsertStudyUploadDocument> InsertStudyUploadDocument{ get; set;}
         public UpdateStudyUploadDocument UpdateStudyUploadDocument { get; set; }
 
     }

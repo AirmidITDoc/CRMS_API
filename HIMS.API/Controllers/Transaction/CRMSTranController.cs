@@ -17,13 +17,15 @@ namespace HIMS.API.Controllers.Transaction
         public readonly I_StudySchedule _StudySchedule;
 
         public readonly I_CommitteeMeeting _CommitteeMeeting;
-
-        public CRMSTranController(I_StudyInformation studyInformation, I_StudyUploadDocument studyUploadDocument, I_StudySchedule studySchedule, I_CommitteeMeeting committeeMeeting)
+        public readonly I_StudyService _StudyService;
+        public CRMSTranController(I_StudyInformation studyInformation, I_StudyUploadDocument studyUploadDocument, I_StudySchedule studySchedule, I_CommitteeMeeting committeeMeeting,
+            I_StudyService studyService)
         {
             _StudyInformation = studyInformation;
             _StudyUploadDocument = studyUploadDocument;
             _StudySchedule = studySchedule;
             _CommitteeMeeting = committeeMeeting;
+            _StudyService = studyService;
         }
 
         [HttpPost("Save_StudyInformation")]
@@ -33,7 +35,7 @@ namespace HIMS.API.Controllers.Transaction
             return Ok(SSR);
         }
 
-        [HttpPut("Update_StudyInformation")]
+        [HttpPost("Update_StudyInformation")]
         //[HttpPut("{id:int}")]
         public IActionResult Update_studyInformation(StudyInformationParams studyInformation)
         {
@@ -48,7 +50,7 @@ namespace HIMS.API.Controllers.Transaction
             return Ok(SSR);
         }
 
-        [HttpPut("Update_StudyUploadDocument")]
+        [HttpPost("Update_StudyUploadDocument")]
         //[HttpPut("{id:int}")]
         public IActionResult Update_StudyUploadDocument(StudyUploadDocumentParams studyUploadDocumentParams)
         {
@@ -63,7 +65,7 @@ namespace HIMS.API.Controllers.Transaction
             return Ok(SSR);
         }
 
-        [HttpPut("Update_UpdateStudySchedule")]
+        [HttpPost("Update_UpdateStudySchedule")]
         //[HttpPut("{id:int}")]
         public IActionResult Update_UpdateStudySchedule(StudyScheduleParams studyScheduleParams)
         {
@@ -75,6 +77,27 @@ namespace HIMS.API.Controllers.Transaction
         public IActionResult Save_InsertCommitteeMaster(CommitteeMeetingParams committeeMeetingParams)
         {
             var SSR = _CommitteeMeeting.InsertCommitteeMeeting(committeeMeetingParams);
+            return Ok(SSR);
+        }
+
+        [HttpPost("Update_InsertCommitteeMaster")]
+        public IActionResult Update_InsertCommitteeMaster(CommitteeMeetingParams committeeMeetingParams)
+        {
+            var SSR = _CommitteeMeeting.InsertCommitteeMeeting(committeeMeetingParams);
+            return Ok(SSR);
+        }
+
+        [HttpPost("Save_InsertStudyService")]
+        public IActionResult Save_InsertStudyService(StudyServiceParam StudyServiceParam)
+        {
+            var SSR = _StudyService.InsertStudyService(StudyServiceParam);
+            return Ok(SSR);
+        }
+
+        [HttpPost("Update_UpdateStudyService")]
+        public IActionResult Update_UpdateStudyService(StudyServiceParam StudyServiceParam)
+        {
+            var SSR = _StudyService.UpdateStudyService(StudyServiceParam);
             return Ok(SSR);
         }
     }
