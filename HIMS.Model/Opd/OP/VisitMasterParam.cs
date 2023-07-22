@@ -72,9 +72,6 @@ namespace HIMS.Model.Opd.OP
         public long CompanyId { get; set; }
         public long UpdatedBy { get; set; }
 
-        public bool IsCancelled { get; set; }
-        public long IsCancelledBy { get; set; }
-        public DateTime IsCancelledDate { get; set; }
         public long ClassId { get; set; }
         public long DepartmentId { get; set; }
         public long PatientOldNew { get; set; }
