@@ -40,14 +40,14 @@ namespace HIMS.API.Controllers.Transaction
         public readonly I_VisitMaster _VisitMaster;
         public readonly I_CompanyDetail _CompanyDetail;
         public readonly I_InvoiceBillMapping _InvoiceBillMapping;
-
+        public readonly I_InvoiceUpdateRegNo _InvoiceUpdateRegNo;
         public OutPatientController(
          
             //I_Dashboard Dashboard,
            I_DynamicExecuteSchedule dynamicExecuteSchedule,
            I_Configsetting configsetting,I_Department department,I_DepartmentType departmentType,I_Registration registration,I_Bill bill, I_CaseDetail caseDetail
          ,I_ClassMaster classMaster,I_ConcessionReasion concessionReasion, I_ServiceMaster serviceMaster,I_Payment payment,I_VisitMaster visitMaster,
-           I_CompanyDetail companyDetail,I_InvoiceBillMapping invoiceBillMapping
+           I_CompanyDetail companyDetail,I_InvoiceBillMapping invoiceBillMapping,I_InvoiceUpdateRegNo invoiceUpdateRegNo
               )
        {
              
@@ -68,6 +68,7 @@ namespace HIMS.API.Controllers.Transaction
 
             this._CompanyDetail = companyDetail;
             this._InvoiceBillMapping = invoiceBillMapping;
+            this._InvoiceUpdateRegNo = invoiceUpdateRegNo;
         }
 
         //SS_RoleTemplateMaster
@@ -302,7 +303,12 @@ namespace HIMS.API.Controllers.Transaction
             return Ok(menuMaster);
         }
 
-
+        [HttpPost("UpdateInvoiceRegno")]
+        public IActionResult UpdateInvoiceRegno(InvoiceUpdateRegNoParam InvoiceUpdateRegNoParam)
+        {
+            var Id = _InvoiceUpdateRegNo.Update(InvoiceUpdateRegNoParam);
+            return Ok(Id);
+        }
 
     }
 

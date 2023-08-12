@@ -38,7 +38,14 @@ namespace HIMS.Data.Opd.OP
                 ExecNonQueryProcWithOutSaveChanges("insert_InvoiceBillDetails", disc5);
             }
 
-            
+            foreach (var a in InvoiceDetailParam.UpdatebillInvoice)
+            {
+                var disc5 = a.ToDictionary();
+                disc5["InvoiceId"] = InvoiceId;
+                ExecNonQueryProcWithOutSaveChanges("Upt_Bill_IsInvoice_1", disc5);
+            }
+
+
             _unitofWork.SaveChanges();
             return InvoiceId;
         }

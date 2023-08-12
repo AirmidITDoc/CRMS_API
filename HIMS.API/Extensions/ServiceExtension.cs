@@ -138,7 +138,7 @@ namespace HIMS.API.Extensions
             services.AddTransient<I_InstitutionInformation, R_InstitutionInformation>();
             services.AddTransient<I_SponserInformation, R_SponserInformation>();
             services.AddTransient<I_StudyService, R_StudyService>();
-
+            services.AddTransient<I_InvoiceUpdateRegNo, R_InvoiceUpdateRegNo>();
         }
 
         public static void AddMyAuthentication(this IServiceCollection services, IConfiguration configuration)

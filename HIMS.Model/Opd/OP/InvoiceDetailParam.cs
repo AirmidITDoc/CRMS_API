@@ -10,6 +10,8 @@ namespace HIMS.Model.Opd.OP
 
         public List<InsertInvoiceBillDetail> InsertInvoiceBillDetail { get; set; }
 
+        public List<UpdatebillInvoice> UpdatebillInvoice { get; set; }
+
         public UpdateInvoiceDetail UpdateInvoiceDetail { get; set; }
 
         public List<UpdateInvoiceBillDetail> UpdateInvoiceBillDetail { get; set; }
@@ -66,7 +68,13 @@ namespace HIMS.Model.Opd.OP
 
         public int CreatedBy { get; set; }
     }
-
+    public class UpdatebillInvoice
+    {
+       
+        public int BillNo { get; set; }
+        public int InvoiceId { get; set; }
+        public bool IsInvoiceGenerated { get; set; }
+    }
     public class UpdateInvoiceBillDetail
     {       
 
@@ -76,4 +84,7 @@ namespace HIMS.Model.Opd.OP
         public bool IsActive { get; set; }
         public int UpdatedBy { get; set; }
     }
+
+
+   
 }
