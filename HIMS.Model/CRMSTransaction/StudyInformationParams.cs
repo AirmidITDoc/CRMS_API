@@ -25,6 +25,8 @@ namespace HIMS.Model.CRMSTransaction
 		public DateTime StudyEndDate { get; set; }
 		public string AgreementFileName { get; set; }
 		public int CreatedBy { get; set; }
+		public string StudyPrefix { get; set; }
+		public int StudyNumber { get; set; }
 		public int StudyId { get; set; }
 
 	}

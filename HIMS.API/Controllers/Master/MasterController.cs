@@ -461,7 +461,7 @@ namespace HIMS.API.Controllers.Master
             return Ok(SSR);
         }
 
-        [HttpPut("Update_UpdateMemberMaster")]
+        [HttpPost("Update_UpdateMemberMaster")]
         //[HttpPut("{id:int}")]
         public IActionResult Update_UpdateMemberMaster(MemberMasterParams MemberMasterParams)
         {
@@ -484,7 +484,7 @@ namespace HIMS.API.Controllers.Master
             return Ok(SSR);
         }
 
-        [HttpPut("Update_UpdateInstitutionInformation")]
+        [HttpPost("Update_UpdateInstitutionInformation")]
         public IActionResult Update_UpdateInstitutionInformation(InstitutionInformationParams institutionInformationParams)
         {
             var SSR = _InstitutionInformation.UpdateInstitutionInformation(institutionInformationParams);
@@ -498,7 +498,7 @@ namespace HIMS.API.Controllers.Master
             return Ok(SSR);
         }
 
-        [HttpPut("Update_UpdateSponserInformation")]
+        [HttpPost("Update_UpdateSponserInformation")]
         public IActionResult Update_UpdateSponserInformation(SponserInformationParams sponserInformationParams)
         {
             var SSR = _SponserInformation.UpdateSponserInformation(sponserInformationParams);

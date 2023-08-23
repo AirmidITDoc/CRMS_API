@@ -9,5 +9,6 @@ namespace HIMS.Data.CRMSTransaction
     {
         public bool InsertStudySchedule(StudyScheduleParams studyScheduleParams);
         public bool UpdateStudySchedule(StudyScheduleParams studyScheduleParams);
+        public bool UpdateStudyScheduleId(StudyScheduleParams studyScheduleParams);
     }
 }

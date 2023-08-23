@@ -73,6 +73,13 @@ namespace HIMS.API.Controllers.Transaction
             return Ok(SSR);
         }
 
+        [HttpPost("Update_UpdateStudyScheduleId")]
+        public IActionResult Update_UpdateStudyScheduleId(StudyScheduleParams studyScheduleParams)
+        {
+            var SSR = _StudySchedule.UpdateStudyScheduleId(studyScheduleParams);
+            return Ok(SSR);
+        }
+
         [HttpPost("Save_InsertCommitteeMaster")]
         public IActionResult Save_InsertCommitteeMaster(CommitteeMeetingParams committeeMeetingParams)
         {
