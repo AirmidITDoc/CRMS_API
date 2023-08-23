@@ -48,7 +48,7 @@ namespace HIMS.Model.Master
 		public Boolean IsInHouseDoctor { get; set; }
 		public Boolean IsOnCallDoctor { get; set; }
 		public long DoctorId { get; set; }
-
+		//public String RefDocHospitalName { get; set; }
 	}
 
 	public class UpdateDoctorMaster
@@ -82,7 +82,7 @@ namespace HIMS.Model.Master
 		public long UpdatedBy { get; set; }
 		public Boolean IsInHouseDoctor { get; set; }
 		public Boolean IsOnCallDoctor { get; set; }
-
+		//public String RefDocHospitalName { get; set; }
 	}
 	public class DoctorDepartmentDet
 	{
