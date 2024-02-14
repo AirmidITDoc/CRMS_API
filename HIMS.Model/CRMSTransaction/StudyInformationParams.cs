@@ -18,6 +18,7 @@ namespace HIMS.Model.CRMSTransaction
 		public int TotalSubjects { get; set; }
 		public int TotalVisits { get; set; }
 		public int VisitFrequency { get; set; }
+		public string VisitStartsFrom { get; set; }
 		public int Sponser { get; set; }
 		public string Investigator { get; set; }
 		public int Institution { get; set; }
@@ -40,6 +41,7 @@ namespace HIMS.Model.CRMSTransaction
 		public int TotalSubjects { get; set; }
 		public int TotalVisits { get; set; }
 		public int VisitFrequency { get; set; }
+		public string VisitStartsFrom { get; set; }
 		public int Sponser { get; set; }
 		public string Investigator { get; set; }
 		public int Institution { get; set; }

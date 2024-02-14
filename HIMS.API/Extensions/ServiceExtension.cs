@@ -21,6 +21,7 @@ using HIMS.Data.Transaction;
 using HIMS.Data.Master.Billing;
 using HIMS.Data.CRMSTransaction;
 using HIMS.Data.CRMSMaster;
+using HIMS.Data.Cardiology;
 
 namespace HIMS.API.Extensions
 {
@@ -139,6 +140,15 @@ namespace HIMS.API.Extensions
             services.AddTransient<I_SponserInformation, R_SponserInformation>();
             services.AddTransient<I_StudyService, R_StudyService>();
             services.AddTransient<I_InvoiceUpdateRegNo, R_InvoiceUpdateRegNo>();
+
+            services.AddTransient<I_PatientInformation, R_PatientInformation>();
+            services.AddTransient<I_PatientPastHistory, R_PatientPastHistory>();
+            services.AddTransient<I_CardiacRiskFactor, R_CardiacRiskFactor>();
+            services.AddTransient<I_IdcadPatientDetails, R_IdcadPatientDetails>();
+            services.AddTransient<I_ScsPatientDetails, R_ScsPatientDetails>();
+            services.AddTransient<I_AcsPatientDetails, R_AcsPatientDetails>();
+            services.AddTransient<I_ProcedureDetails, R_ProcedureDetails>();
+            services.AddTransient<I_LesionDetails, R_LesionDetails>();
         }
 
         public static void AddMyAuthentication(this IServiceCollection services, IConfiguration configuration)

@@ -21,6 +21,7 @@ namespace HIMS.Model.CRMSTransaction
         public string VisitDescription { get; set; }
         public int VisitAmount { get; set; }
         public int VisitFrequency { get; set; }
+        public string VisitStartsFrom { get; set; }
         public int CreatedBy { get; set; }
     }
     public class UpdateStudySchedule
@@ -32,6 +33,7 @@ namespace HIMS.Model.CRMSTransaction
         public string VisitDescription { get; set; }
         public int VisitAmount { get; set; }
         public int VisitFrequency { get; set; }
+        public string VisitStartsFrom { get; set; }
         public int UpdatedBy { get; set; }
     }
 
@@ -44,6 +46,7 @@ namespace HIMS.Model.CRMSTransaction
         public string VisitDescription { get; set; }
         public int VisitAmount { get; set; }
         public int VisitFrequency { get; set; }
+        public string VisitStartsFrom { get; set; }
         public int UpdatedBy { get; set; }
     }
     public class DeleteStudySchedule
