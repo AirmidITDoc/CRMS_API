@@ -18,14 +18,16 @@ namespace HIMS.API.Controllers.Transaction
 
         public readonly I_CommitteeMeeting _CommitteeMeeting;
         public readonly I_StudyService _StudyService;
+        public readonly I_Billintegration _Billintegration;
         public CRMSTranController(I_StudyInformation studyInformation, I_StudyUploadDocument studyUploadDocument, I_StudySchedule studySchedule, I_CommitteeMeeting committeeMeeting,
-            I_StudyService studyService)
+            I_StudyService studyService, I_Billintegration billintegration)
         {
             _StudyInformation = studyInformation;
             _StudyUploadDocument = studyUploadDocument;
             _StudySchedule = studySchedule;
             _CommitteeMeeting = committeeMeeting;
             _StudyService = studyService;
+            _Billintegration = billintegration;
         }
 
         [HttpPost("Save_StudyInformation")]
@@ -106,6 +108,20 @@ namespace HIMS.API.Controllers.Transaction
         {
             var SSR = _StudyService.UpdateStudyService(StudyServiceParam);
             return Ok(SSR);
+        }
+
+        [HttpPost("Update_Bill_integration")]
+        public IActionResult Update_Bill_integration(BillintegrationParams billintegrationParams)
+        {
+            var SSR = _Billintegration.Update_Bill_integration(billintegrationParams);
+            return Ok(SSR); 
+        }
+
+        [HttpPost("update_AddCharges_integration")]
+        public IActionResult update_AddCharges_integration(BillintegrationParams billintegrationParams)
+        {
+            var SSR = _Billintegration.update_AddCharges_integration(billintegrationParams);
+            return Ok(SSR); 
         }
     }
 }
