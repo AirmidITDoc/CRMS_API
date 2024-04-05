@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection;
 
 namespace HIMS.Data
 {
@@ -26,6 +27,7 @@ namespace HIMS.Data
             CommandType type, 
             Dictionary<string, object> entity, 
             SqlParameter outputParam = null
+
             )
         {
             _sqlCommand.CommandText = query;
@@ -56,6 +58,8 @@ namespace HIMS.Data
             CommandType type,
             Dictionary<string, object> entity,
             SqlParameter outputParam = null
+
+
             )
         {
             _sqlCommand.CommandText = query;
@@ -78,6 +82,24 @@ namespace HIMS.Data
                 _sqlCommand.Parameters.Add(param);
             }
 
+            return _sqlCommand;
+        }
+
+        public SqlCommand Select_CreateCommand(
+         string query,
+         CommandType type,
+         SqlParameter[] entity,
+         SqlParameter outputParam = null
+         )
+        {
+            _sqlCommand.CommandText = query;
+            _sqlCommand.CommandType = type;
+            _sqlCommand.Parameters.Clear();
+            if (outputParam != null)
+            {
+                _sqlCommand.Parameters.Add(outputParam);
+            }
+            _sqlCommand.Parameters.AddRange(entity);
             return _sqlCommand;
         }
 
@@ -221,5 +243,82 @@ namespace HIMS.Data
             _unitofWork.SaveChanges();
             return result;
         }
+
+
+        public object ExecuteObjectBySP(string query, SqlParameter[] entity)
+        {
+            var cmd = Select_CreateCommand(query, CommandType.StoredProcedure, entity);
+            object obj = cmd.ExecuteScalar();
+            _unitofWork.SaveChanges();
+            return obj;
+        }
+
+        public T GetListItem<T>(SqlDataReader dr)
+        {
+            Type temp = typeof(T);
+            T obj = Activator.CreateInstance<T>();
+
+            for (int i = 0; i < dr.FieldCount; i++)
+            {
+                foreach (PropertyInfo pro in temp.GetProperties())
+                {
+                    if (pro.Name.ToLower().Split('_')[0] == dr.GetName(i).ToLower().Split('_')[0])
+                    {
+                        if (!string.IsNullOrEmpty(Convert.ToString(dr[i])))
+                        {
+                            if (pro.PropertyType.Name == "String")
+                                pro.SetValue(obj, Convert.ToString(dr[i]));
+                            else if (pro.PropertyType.Name == "Byte[]" && string.IsNullOrEmpty(Convert.ToString(dr[i])))
+                                pro.SetValue(obj, new byte[0]);
+                            else
+                                pro.SetValue(obj, dr[i]);
+                        }
+                        else
+                        {
+                            if (pro.PropertyType.Name == "String")
+                                pro.SetValue(obj, "");
+                        }
+                        break;
+                    }
+                }
+            }
+            return obj;
+        }
+
+        public List<T> GetList<T>(string query, SqlParameter[] entity)
+        {
+            var cmd = Select_CreateCommand(query, CommandType.Text, entity);
+            var dr = cmd.ExecuteReader();
+            List<T> lst = new List<T>();
+            while (dr.Read())
+            {
+                T item = GetListItem<T>(dr);
+                lst.Add(item);
+            }
+            dr.Close();
+            //_unitofWork.SaveChanges();
+            return lst;
+        }
+        public List<T> GetListBySp<T>(string query, SqlParameter[] entity)
+        {
+            List<T> lst = new List<T>();
+            try
+            {
+                var cmd = Select_CreateCommand(query, CommandType.StoredProcedure, entity);
+                var dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    T item = GetListItem<T>(dr);
+                    lst.Add(item);
+                }
+                dr.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+            //_unitofWork.SaveChanges();
+            return lst;
+        }
+
     }
 }
