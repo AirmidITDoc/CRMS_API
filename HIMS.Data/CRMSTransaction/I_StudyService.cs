@@ -9,5 +9,7 @@ namespace HIMS.Data.CRMSTransaction
     {
         public bool InsertStudyService(StudyServiceParam StudyServiceParam);
         public bool UpdateStudyService(StudyServiceParam StudyServiceParam);
+        public bool UpdateStudyServiceId(StudyServiceParam StudyServiceParam);
+
     }
 }

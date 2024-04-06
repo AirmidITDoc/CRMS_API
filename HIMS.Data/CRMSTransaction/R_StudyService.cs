@@ -65,5 +65,18 @@ namespace HIMS.Data.CRMSTransaction
 
 
         }
+
+        public bool UpdateStudyServiceId(StudyServiceParam StudyServiceParam)
+        {
+
+            var disc5 = StudyServiceParam.UpdateStudyserviceId.ToDictionary();
+            //disc5.Remove("StudyVisitId");
+            var ChargeID = ExecNonQueryProcWithOutSaveChanges("Update_StudySchedule", disc5);
+
+            _unitofWork.SaveChanges();
+            return true;
+
+
+        }
     }
 }

@@ -110,6 +110,13 @@ namespace HIMS.API.Controllers.Transaction
             return Ok(SSR);
         }
 
+        [HttpPost("Update_UpdateStudyServiceId")]
+        public IActionResult Update_UpdateStudyServiceId(StudyServiceParam StudyServiceParam)
+        {
+            var SSR = _StudyService.UpdateStudyService(StudyServiceParam);
+            return Ok(SSR);
+        }
+
         [HttpPost("Update_Bill_integration")]
         public IActionResult Update_Bill_integration(BillintegrationParams billintegrationParams)
         {
