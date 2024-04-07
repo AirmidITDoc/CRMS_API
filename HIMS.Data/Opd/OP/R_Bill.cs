@@ -48,13 +48,6 @@ namespace HIMS.Data.Opd.OP
             disc3.Remove("BillNo");
             var BillNo = ExecNonQueryProcWithOutSaveChanges("insert_Bill_UpdateWithBillNo_1_New", disc3, outputId1);
 
-              //foreach (var a in BillParam.OpBillDetailsInsert)
-              //{
-              //    var disc5 = a.ToDictionary();
-              //    disc5["BillNo"] = BillNo;
-              //    ExecNonQueryProcWithOutSaveChanges("insert_IPAddCharges_1", disc5);
-              //}
-            
             foreach (var a in BillParam.ChargesDetailInsert)
              {
                  var disc5 = a.ToDictionary();
@@ -68,34 +61,7 @@ namespace HIMS.Data.Opd.OP
                 OPBillDet.Add("ChargesID", ChargeID);
                 ExecNonQueryProcWithOutSaveChanges("insert_BillDetails_1", OPBillDet);
 
-                //if (a.IsPathology)
-                //{
-                //    Dictionary<string, Object> PathParams = new Dictionary<string, object>();
-
-                //    PathParams.Add("PathDate", a.ChargesDate);
-                //    PathParams.Add("PathTime", a.ChargesDate);
-                //    PathParams.Add("OPD_IPD_Type", a.OPD_IPD_Type);
-                //    PathParams.Add("OPD_IPD_Id", a.OPD_IPD_Id);
-                //    PathParams.Add("PathTestID", a.ServiceId);
-                //    PathParams.Add("AddedBy", a.AddedBy);
-                //    PathParams.Add("ChargeID", ChargeID);
-                //    PathParams.Add("IsCompleted", 0);
-                //    PathParams.Add("IsPrinted", 0);
-                //    PathParams.Add("IsSamplecollection", 0);
-                //    PathParams.Add("TestType", 0);
-
-                //    ExecNonQueryProcWithOutSaveChanges("insert_PathologyReportHeader_1", PathParams);
-                //}
-
-
-                //var BillDet = BillParam.BillDetailInsert.ToDictionary();
-                //BillDet["BillNo"] = BillNo;
-                //BillDet["ChargesID"] = ChargeID;
-                //ExecNonQueryProcWithOutSaveChanges("insert_BillDetails_1", BillDet);
-
             }
-
-            //IPBillingParams.BillDetailsInsert.BillNo = (int)Convert.ToInt64(BillNo);
 
             _unitofWork.SaveChanges();
             return BillNo;

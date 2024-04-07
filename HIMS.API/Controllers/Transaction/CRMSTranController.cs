@@ -113,7 +113,7 @@ namespace HIMS.API.Controllers.Transaction
         [HttpPost("Update_UpdateStudyServiceId")]
         public IActionResult Update_UpdateStudyServiceId(StudyServiceParam StudyServiceParam)
         {
-            var SSR = _StudyService.UpdateStudyService(StudyServiceParam);
+            var SSR = _StudyService.UpdateStudyServiceId(StudyServiceParam);
             return Ok(SSR);
         }
 

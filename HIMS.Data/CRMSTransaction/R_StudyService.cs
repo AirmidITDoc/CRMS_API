@@ -70,9 +70,7 @@ namespace HIMS.Data.CRMSTransaction
         {
 
             var disc5 = StudyServiceParam.UpdateStudyserviceId.ToDictionary();
-            //disc5.Remove("StudyVisitId");
-            var ChargeID = ExecNonQueryProcWithOutSaveChanges("Update_StudySchedule", disc5);
-
+            var ChargeID = ExecNonQueryProcWithOutSaveChanges("update_T_StudyServices", disc5);
             _unitofWork.SaveChanges();
             return true;
 
