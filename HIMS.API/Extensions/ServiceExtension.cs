@@ -155,6 +155,7 @@ namespace HIMS.API.Extensions
 
             services.AddTransient<I_RoleMaster, R_RoleMaster>();
             services.AddTransient<I_ChangePassword, R_ChangePassword>();
+            services.AddTransient<I_SSDoctorPercentage, R_SSDoctorPercentage>();
         }
 
         public static void AddMyAuthentication(this IServiceCollection services, IConfiguration configuration)

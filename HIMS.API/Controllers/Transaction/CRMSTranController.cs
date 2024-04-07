@@ -19,8 +19,9 @@ namespace HIMS.API.Controllers.Transaction
         public readonly I_CommitteeMeeting _CommitteeMeeting;
         public readonly I_StudyService _StudyService;
         public readonly I_Billintegration _Billintegration;
+        public readonly I_SSDoctorPercentage _SSDoctorPercentage;
         public CRMSTranController(I_StudyInformation studyInformation, I_StudyUploadDocument studyUploadDocument, I_StudySchedule studySchedule, I_CommitteeMeeting committeeMeeting,
-            I_StudyService studyService, I_Billintegration billintegration)
+            I_StudyService studyService, I_Billintegration billintegration,I_SSDoctorPercentage sSDoctorPercentage)
         {
             _StudyInformation = studyInformation;
             _StudyUploadDocument = studyUploadDocument;
@@ -28,6 +29,7 @@ namespace HIMS.API.Controllers.Transaction
             _CommitteeMeeting = committeeMeeting;
             _StudyService = studyService;
             _Billintegration = billintegration;
+            _SSDoctorPercentage = sSDoctorPercentage;
         }
 
         [HttpPost("Save_StudyInformation")]
@@ -122,6 +124,21 @@ namespace HIMS.API.Controllers.Transaction
         {
             var SSR = _Billintegration.update_AddCharges_integration(billintegrationParams);
             return Ok(SSR); 
+        }
+
+
+        [HttpPost("Insert_SSDoctorPecentage")]
+        public IActionResult InsertDoctorPercentage(SSDoctorPercentageparam SSDoctorPercentageparam)
+        {
+            var SSR = _SSDoctorPercentage.Insert(SSDoctorPercentageparam);
+            return Ok(SSR);
+        }
+
+        [HttpPost("update_SSDoctorPecentage")]
+        public IActionResult updateDoctorPercentage(SSDoctorPercentageparam SSDoctorPercentageparam)
+        {
+            var SSR = _SSDoctorPercentage.update(SSDoctorPercentageparam);
+            return Ok(SSR);
         }
     }
 }
