@@ -8,7 +8,7 @@ namespace HIMS.Data.Master
     public interface I_MenuMaster
     {
         bool Save(MenuMasterParams menuMasterParams);
-
         bool Update(MenuMasterParams menuMasterParams);
+        List<MenuMaster> GetMenus(int RoleId);
     }
 }

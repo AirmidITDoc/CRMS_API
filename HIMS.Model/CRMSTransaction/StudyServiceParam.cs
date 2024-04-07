@@ -8,8 +8,8 @@ namespace HIMS.Model.CRMSTransaction
     {
         public List<InsertStudyservice> InsertStudyservice { get; set; }
         public List<UpdateStudyservice> UpdateStudyservice { get; set; }
-
         public DeleteStudyService DeleteStudyService { get; set; }
+        public UpdateStudyserviceId UpdateStudyserviceId { get; set; }
 
     }
     public class InsertStudyservice
@@ -38,5 +38,16 @@ namespace HIMS.Model.CRMSTransaction
     public class DeleteStudyService
     {
         public int StudyId { get; set; }
+    }
+    public class UpdateStudyserviceId
+    {
+        public String Operation { get; set; }
+        public int StudyServicesId { get; set; }
+        public int StudyId { get; set; }
+        public int StudyVisitId { get; set; }
+        public int ServiceId { get; set; }
+        public int Amount { get; set; }
+        public bool IsActive { get; set; }
+        public int UpdatedBy { get; set; }
     }
 }
