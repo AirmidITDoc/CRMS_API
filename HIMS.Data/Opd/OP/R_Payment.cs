@@ -15,6 +15,18 @@ namespace HIMS.Data.Opd.OP
             //transaction and connection is open when you inject unitofwork
         }
 
+        public bool PatientServicePayUpdate(PaymentParam PaymentParam)
+        {
+            // throw new NotImplementedException();
+
+            var disc1 = PaymentParam.PatientServicepayupdate.ToDictionary();
+            
+            ExecNonQueryProcWithOutSaveChanges("update_paymentforPatientService", disc1);
+
+            _unitofWork.SaveChanges();
+            return true;
+        }
+
         public bool Save(PaymentParam PaymentParam)
         {
             //throw new NotImplementedException();

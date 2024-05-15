@@ -7,7 +7,7 @@ namespace HIMS.Data.Opd.OP
 {
    public interface I_Payment
     {
-        //bool Update(PaymentParam PaymentParam);
+        bool PatientServicePayUpdate(PaymentParam PaymentParam);
         bool Save(PaymentParam PaymentParam);
     }
 }

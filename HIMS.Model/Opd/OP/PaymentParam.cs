@@ -4,9 +4,11 @@ using System.Text;
 
 namespace HIMS.Model.Opd.OP
 {
-   public class PaymentParam
+    public class PaymentParam
     {
         public OPInsertPayment OPInsertPayment { get; set; }
+
+        public PatientServicepayupdate PatientServicepayupdate { get; set; }
     }
 
     public class OPInsertPayment
@@ -45,4 +47,13 @@ namespace HIMS.Model.Opd.OP
         public String PayTMTranNo { get; set; }
         public DateTime PayTMDate { get; set; }
     }
+
+  
+    public class PatientServicepayupdate{
+      public int ChargesId { get; set; }
+    public String UTINo { get; set; }
+    
+    public DateTime PaymentDate { get; set; }
+    public string Comments { get; set; }
+}
 }
