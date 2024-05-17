@@ -310,6 +310,15 @@ namespace HIMS.API.Controllers.Transaction
             return Ok(Id);
         }
 
+
+        [HttpPost("PatientservicePaymentUpdate")]
+        public IActionResult PatientservicepayupdatePayment(PaymentParam PaymentParam)
+        {
+            var Id = _Payment.PatientServicePayUpdate(PaymentParam);
+
+            return Ok(Id);
+        }
+
     }
 
 }
