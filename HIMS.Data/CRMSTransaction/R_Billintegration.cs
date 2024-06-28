@@ -33,5 +33,15 @@ namespace HIMS.Data.CRMSTransaction
             return true;
 
         }
+
+        public bool Update_SeviceExlude(BillintegrationParams billintegrationParams)
+        {
+            // throw new NotImplementedException();
+            var disc3 = billintegrationParams.update_ServiceExclude.ToDictionary();
+            var Id = ExecNonQueryProcWithOutSaveChanges("Update_ServieExclude", disc3);
+
+            _unitofWork.SaveChanges();
+            return true;
+        }
     }
 }

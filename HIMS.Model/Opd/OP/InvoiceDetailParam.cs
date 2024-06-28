@@ -15,6 +15,8 @@ namespace HIMS.Model.Opd.OP
         public UpdateInvoiceDetail UpdateInvoiceDetail { get; set; }
 
         public List<UpdateInvoiceBillDetail> UpdateInvoiceBillDetail { get; set; }
+
+        public UpdateStopScreening UpdateStopScreening { get; set; }
     }
 
     public class InsertInvoiceDetail
@@ -86,5 +88,9 @@ namespace HIMS.Model.Opd.OP
     }
 
 
-   
+   public class UpdateStopScreening
+    {
+        public int VisitId { get; set; }
+        public int RegId { get; set; }
+    }
 }

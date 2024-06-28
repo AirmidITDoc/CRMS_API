@@ -9,5 +9,7 @@ namespace HIMS.Data.Opd.OP
     {
         String Insert(InvoiceDetailParam InvoiceDetailParam);
         bool Update(InvoiceDetailParam InvoiceDetailParam);
+
+        bool UpdateStoScreening(InvoiceDetailParam InvoiceDetailParam);
     }
 }

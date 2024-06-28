@@ -67,5 +67,14 @@ namespace HIMS.Data.Opd.OP
             _unitofWork.SaveChanges();
             return true;
         }
+
+        public bool UpdateStoScreening(InvoiceDetailParam InvoiceDetailParam)
+        {
+            var disc5 = InvoiceDetailParam.UpdateStopScreening.ToDictionary();
+            ExecNonQueryProcWithOutSaveChanges("Update_StopScreening", disc5);
+
+            _unitofWork.SaveChanges();
+            return true;
+        }
     }
 }
