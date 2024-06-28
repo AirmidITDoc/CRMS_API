@@ -147,5 +147,13 @@ namespace HIMS.API.Controllers.Transaction
             var SSR = _SSDoctorPercentage.update(SSDoctorPercentageparam);
             return Ok(SSR);
         }
+
+
+        [HttpPost("update_ServiceExclude")]
+        public IActionResult updateServiceExclude(BillintegrationParams BillintegrationParams)
+        {
+            var SSR = _Billintegration.Update_SeviceExlude(BillintegrationParams);
+            return Ok(SSR);
+        }
     }
 }

@@ -9,5 +9,8 @@ namespace HIMS.Data.CRMSTransaction
     {
         public bool Update_Bill_integration(BillintegrationParams billintegrationParams);
         public bool update_AddCharges_integration(BillintegrationParams billintegrationParams);
+
+        public bool Update_SeviceExlude(BillintegrationParams billintegrationParams);
+        
     }
 }

@@ -269,6 +269,13 @@ namespace HIMS.API.Controllers.Transaction
                         return Ok(menuMaster);
         }
 
+        [HttpPost("StopScreeningUpdate")]
+        public IActionResult StopscreeningUpdate(InvoiceDetailParam InvoiceDetailParam)
+        {
+            var menuMaster = _InvoiceBillMapping.UpdateStoScreening(InvoiceDetailParam);
+            return Ok(menuMaster);
+        }
+
         // CompanyDetail Insert & Update
         [HttpPost("CompanyDetailSave")]
         public IActionResult CompanyDetailSave(CompanyDetail CompanyDetail)
