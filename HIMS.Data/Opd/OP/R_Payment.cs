@@ -42,7 +42,6 @@ namespace HIMS.Data.Opd.OP
 
             var disc7 = PaymentParam.OPInsertPayment.ToDictionary();
             disc7.Remove("PaymentId");
-            //disc7["BillNo"] = (int)Convert.ToInt64(BillNo);
             ExecNonQueryProcWithOutSaveChanges("insert_Payment_New_1", disc7, outputId3);
 
             _unitofWork.SaveChanges();
