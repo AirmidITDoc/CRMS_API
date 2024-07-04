@@ -36,8 +36,8 @@ namespace HIMS.Model.CRMSTransaction
         public int ChargesId { get; set; }
 
         public int BillNo { get; set; }
-
-
+        public bool IsActive { get; set; }
+        
     }
 }
 
